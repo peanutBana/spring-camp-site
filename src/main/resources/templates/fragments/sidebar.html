@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- th:fragment 다른 페이지에 포함시킬 영역을 만들어 준다 -->
+   <div th:fragment="sidebar">
+	   <div id="page-wrapper">
+	  <!-- 사이드바 -->
+		  <div id="sidebar-wrapper">
+		    <ul class="sidebar-nav">
+		      <li><a href="#">메뉴 1</a></li>
+		      <li><a href="#">메뉴 2</a></li>
+		      <li><a href="#">메뉴 3</a></li>
+		      <li><a href="#">메뉴 4</a></li>
+		      <li><a href="#">메뉴 5</a></li>
+		    </ul>
+		  </div>
+		  <!-- /사이드바 -->
+		</div>
+   </div>
+</body>
+</html>
