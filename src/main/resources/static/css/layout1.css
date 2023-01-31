@@ -9,6 +9,8 @@ html{
 
 body{
 	min-height: 100%;
+	width: 1400px;
+    margin: 0 auto;
 }
 
 footer{
@@ -22,5 +24,59 @@ footer{
 }
 
 .content{
-	margin: 50px 200px 100px 200px;
+	margin: 50px 200px;
+	
+	
 }
+
+.carousel-inner{
+	width: 800px;
+}
+
+.section{
+  	display:flex;
+	
+}
+ 
+.content{
+	background :lightgreen;
+}
+
+.mid{
+	display:flex;
+	flex-direction: row;
+	margin: 10px 0;
+	padding: 10px 0;
+	/* border: 1px solid black;
+	border-radius: 30px; */
+}
+
+content-items{
+	margin:10px 0;	
+}
+
+.site-info{
+	width: 48%;
+}
+
+.exhibition{
+	width: 48%;
+}
+.v-line {
+  border-left : 1px solid #000;
+  height : 120px;
+  width: 2%;
+}
+.card-section{
+	display:flex;
+}
+
+.card{
+	width:30%;
+	margin:5px;
+}
+
+p{
+	font-size: 24px;
+}
+ 

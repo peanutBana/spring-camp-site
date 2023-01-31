@@ -11,14 +11,13 @@
 <style>
 	/* 사이드바 래퍼 스타일 */
   #page-wrapper {
-    padding-left: 250px;
+    padding-left: 200px;
   }
   
   #sidebar-wrapper {
-    position: fixed;
     width: 250px;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -200px;
     background: #ffbebe;
     overflow-x: hidden;
     overflow-y: auto;
@@ -31,7 +30,7 @@
   /* 사이드바 스타일 */
   
   .sidebar-nav {
-    width: 250px;
+    /* width: 250px; */
     margin: 0;
     padding: 0;
     list-style: none;
@@ -66,20 +65,35 @@
 
 </head>
 <body>
-	<div layout:fragment="content">
-	   <div class="carousel">
+	<div layout:fragment="sidebar">
+	   <div id="page-wrapper">
+	  <!-- 사이드바 -->
+		  <div id="sidebar-wrapper">
+		    <ul class="sidebar-nav">
+		      <li><img src="/images/camp01.jpg"/><a href="#">메뉴 1</a></li>
+		      <li><img src="/images/camp02.jpg"/><a href="#">메뉴 2</a></li>
+		      <li><img src=""/><a href="#">메뉴 3</a></li>
+		      <li><img src=""/><a href="#">메뉴 4</a></li>
+		      <li><img src=""/><a href="#">메뉴 5</a></li>
+		    </ul>
+		  </div>
+		</div>
+   </div>
+	</div>
+	 <div layout:fragment="content">
+	   <div class="carousel content-items">
 	   		<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
 			  <div class="carousel-inner">
+			  
 			    <div class="carousel-item active">
-			      <img src="..." class="d-block w-100" alt="...">
+			      <img src="https://p4.wallpaperbetter.com/wallpaper/732/641/312/nature-sunset-landscape-camping-wallpaper-preview.jpg" class="d-block w-100" alt="...">
 			    </div>
+			    
 			    <div class="carousel-item">
-			      <img src="..." class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="..." class="d-block w-100" alt="...">
+			      <img src="https://p4.wallpaperbetter.com/wallpaper/616/958/383/stars-trees-camping-camp-fire-camp-night-hd-wallpaper-preview.jpg" class="d-block w-100" alt="...">
 			    </div>
 			  </div>
+			  
 			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="visually-hidden">Previous</span>
@@ -90,6 +104,49 @@
 			  </button>
 			</div>
 	   </div>
+	   <div class="mid">
+			<div class="site-info content-items">
+				<p>사이트 정보</p>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>					
+				</ul>
+			</div>
+			<div class="v-line"></div>
+			<div class="exhibition">
+				<p>기획전</p>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>					
+				</ul>
+			</div>
+		</div>
+		<div class="admin-sgt content-items">
+		<p>추천 사이트</p>
+			<div class="card-section">
+				<div class="card" style="width: 18rem;">
+				  <img src="https://p4.wallpaperbetter.com/wallpaper/445/193/170/5bd028967a541-wallpaper-preview.jpg" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;">
+				  <img src="https://p4.wallpaperbetter.com/wallpaper/445/193/170/5bd028967a541-wallpaper-preview.jpg" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;">
+				  <img src="https://p4.wallpaperbetter.com/wallpaper/445/193/170/5bd028967a541-wallpaper-preview.jpg" class="card-img-top" alt="...">
+				  <div class="card-body">
+				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				  </div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>

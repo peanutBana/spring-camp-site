@@ -9,7 +9,7 @@
 <!-- th:fragment 다른 페이지에 포함시킬 영역을 만들어 준다 -->
    <div th:fragment="header">
       <nav class="navbar navbar-expand-sm" style="background-color:lightpink;">
-  <div class="container-fluid">
+   <div class="container-fluid">
     <a class="navbar-brand" href="/"><img src="/images/logo.png" width="45" alt="로고"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,12 +36,8 @@
           <a class="nav-link" href="/members/logout">로그아웃</a>
         </li>
       </ul>
-      <form class="d-flex" role="search" th:action="@{/}" method="get">
-        <input name="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
-  </div>
+   </div>
 </nav>
    </div>
 </body>
