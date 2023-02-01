@@ -7,38 +7,21 @@
 </head>
 <body>
 <!-- th:fragment 다른 페이지에 포함시킬 영역을 만들어 준다 -->
-   <div th:fragment="header">
-      <nav class="navbar navbar-expand-sm" style="background-color:lightpink;">
-   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="/images/logo.png" width="45" alt="로고"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-          <a class="nav-link" href="/admin/item/new">상품등록</a>
-        </li>
-        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-          <a class="nav-link" href="/admin/items">상품관리</a>
-        </li>
-        <li class="nav-item" sec:authorize="isAuthenticated()">
-          <a class="nav-link" href="/cart">장바구니</a>
-        </li>
-        <li class="nav-item" sec:authorize="isAuthenticated()">
-          <a class="nav-link" href="/orders">구매이력</a>
-        </li>
-        <li class="nav-item" sec:authorize="isAnonymous()">
-          <a class="nav-link" href="/members/login">로그인</a>
-        </li>
-        <li class="nav-item" sec:authorize="isAuthenticated()">
-          <a class="nav-link" href="/members/logout">로그아웃</a>
-        </li>
-      </ul>
-    </div>
-   </div>
-</nav>
-   </div>
+   <div th:fragment="header" class="header">
+	    <div class="icon">
+	    		<a class="navbar-brand" href="/"><img src="/images/logo.png" width="45" alt="로고"></a>	   		
+		</div>
+	    <div class="title">캠핑어때</div>
+	    <div class="auth">
+	   		<ul>
+	   		  	<li class="nav-item" sec:authorize="isAnonymous()">
+		          <a class="nav-link" href="/users/login">로그인</a>
+		        </li>
+		        <li class="nav-item" sec:authorize="isAuthenticated()">
+		          <a class="nav-link" href="/users/logout">로그아웃</a>
+		        </li>
+	   		</ul>
+	   </div>
+	</div>
 </body>
 </html>

@@ -25,7 +25,7 @@
 	<div th:replace="fragments/header::header"></div>
 	
 	<div class=section>
-		<div layout:fragment="sidebar"></div>
+		<div th:replace="fragments/sidebar::sidebar"></div>
 		
 		<!--레이아웃에서 변경될 영역을 설정 = -->
 		<div layout:fragment="content" class="content"></div>
