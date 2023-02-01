@@ -164,7 +164,7 @@ p{
   	border: 1px solid blue;
   	border-radius: 30px;
   	padding: 50px;
-  	width: 700px;
+  	width: 500px;
   	margin: 50px auto;
   	height: 350px;
   }
@@ -174,21 +174,40 @@ p{
   
   .login_input{
   	display: flex;
+  	width: 400px;
   	margin-bottom: 20px;
   }
   
   label{
-  	width: 100px;
+  	width: 150px;
+  	text-align: center;
   }
   
   .login_buttons{
-  	text-align: center;
+  	text-align: right;
 	margin-top:50px;
   }
   
+  /*회원가입 화면*/
+  .join_frm{
+  	border: 1px solid blue;
+  	border-radius: 30px;
+  	padding: 50px;
+  	width: 500px;
+  	margin: 50px auto;
+  	height: 400px;
+  }
+  
+  .join_frm p{
+  	text-align: center;
+  }
   
   
-  
-  
-  
+  .join_button{
+  	text-align: center;
+	margin-top: 30px;
+  	
+  	
+  }
+  	
  

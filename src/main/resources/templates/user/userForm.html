@@ -49,24 +49,29 @@
 <body>
 	<div layout:fragment="content">
 		
-		<div class="login_frm">
-			<p>로그인</p>
-			<form class="log_frm" action="/users/login" method="post">
-			<div class="login_input">
-				<label th:for="email">이메일</label> 
-				<input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요">
-			</div>
-			<div class="login_input">
-				<label th:for="password">비밀번호</label> 
-				<input type="password" name="password" id="password" class="form-control" placeholder="비밀번호를 입력">
-			</div>
-			<div class="login_buttons">
-				<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-				<button type="submit" class="btn btn-primary mb-3" id="loginbtn">로그인</button>
-				<button type="button" class="btn btn-primary mb-3"
-					onClick="location.href='/members/new'">회원가입</button>
-			</div>
-		</form>
+		<div class="join_frm">
+			<p>회원가입</p>
+			<form action="/users/new" method="post">
+				<div class="login_input">
+					<label th:for="name">이름</label> 
+					<input type="text" class="form-control" placeholder="이름을 입력해주세요">
+				</div>
+				<div class="login_input">
+					<label th:for="email">이메일</label> 
+					<input type="email" class="form-control" placeholder="이메일을 입력해주세요">
+				</div>
+				<div class="login_input">
+					<label th:for="password">비밀번호</label> 
+					<input type="password" class="form-control" placeholder="비밀번호를 입력">
+				</div>
+				<div class="login_input">
+					<label th:for="password">비밀번호 확인</label> 
+					<input type="password" class="form-control" placeholder="비밀번호 재입력">
+				</div>
+				<div class="join_button">
+					<button type="submit" class="btn btn-primary mb-3">회원가입</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>
