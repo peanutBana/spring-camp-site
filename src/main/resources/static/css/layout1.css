@@ -34,6 +34,10 @@ footer{
 	width: 17.8%;
 	text-align: center;
 }
+.icon img{
+	width: 80px;
+	height: 80px;
+}
 .title{
 	width: 64.4%;
 	text-align: center;
@@ -91,12 +95,24 @@ footer{
   width: 2%;
 }
 .card-section{
-	display:flex;
+	display:flex;	
 }
 
 .card{
 	width:30%;
 	margin:5px;
+}
+.card img{
+	transition: 0.3s;
+}
+.card a:hover img{
+	transform: scale(1.1);
+}
+.card a{
+	display:block;
+	overflow:hidden;
+	text-decoration: none;
+	text-color: black;
 }
 
 p{
@@ -180,7 +196,7 @@ p{
   
   label{
   	width: 150px;
-  	text-align: center;
+  	
   }
   
   .login_buttons{
