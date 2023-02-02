@@ -23,6 +23,7 @@ body {
 	min-height: 100%;
 	width: 1200px;
 	margin: 0 auto;
+	display: relative;
 }
 
 footer {
@@ -56,6 +57,9 @@ footer {
 	width: 17.8%;
 	display: flex;
 	text-align: center;
+}
+.nav-item{
+	color: white;
 }
 
 .content {
@@ -103,10 +107,12 @@ ul li {
 
 .v-line {
 	border-left: 1px solid #000;
-	height: 120px;
+	height: 150px;
 	width: 2%;
 }
-
+.admin-sgt{
+	margin-bottom: 150px;
+}
 .card-section {
 	display: flex;
 }
@@ -168,6 +174,7 @@ p {
 .sidebar-nav li {
 	line-height: 2.8em;
 	text-align: center;
+	font-size: 24px;
 }
 
 .sidebar-nav li a {
@@ -207,7 +214,7 @@ p {
 .login_input {
 	display: flex;
 	width: 400px;
-	margin-bottom: 20px;
+	margin-bottom: 50px; 
 }
 
 label {
@@ -216,7 +223,7 @@ label {
 
 .login_buttons {
 	text-align: right;
-	margin-top: 50px;
+	margin-top: 40px;
 }
 
 /*회원가입 화면*/
@@ -226,7 +233,7 @@ label {
 	padding: 50px;
 	width: 500px;
 	margin: 50px auto;
-	height: 400px;
+	height: 520px;
 	color: white;
 	background: #fed08c;
 	background-image: url("/images/mil.jpg");
@@ -239,13 +246,16 @@ label {
 
 .join_button {
 	text-align: center;
-	margin-top: 30px;
+
 }
 
 /*post list*/
 .search{
 	width: 700px;
 	margin: 30px auto;
+}
+.search input{
+	 border-radius: 30px
 }
 .search button{
 	width: 60px;
@@ -264,6 +274,7 @@ label {
 	width: 700px;
 	height: 300px;
 	margin: 30px auto 50px;
+	position: relative;
 }
 
 .post-card-body {
@@ -273,6 +284,17 @@ label {
 .post-card-title {
 	font-size: 32px;
 	margin-bottom: 10px;
+}
+
+.post-card-content{
+	margin-bottom: 10px;
+	
+}
+
+.like-comment{
+	position: absolute;
+	right: 10px;
+ 	bottom: 10px;
 }
 
 .post-card-img {
@@ -293,4 +315,19 @@ label {
 .paging{
 	width: 200px;
 	margin: 0 auto 100px;
+}
+
+/*post detail*/
+.deteail-images{
+	margin: 30px auto;
+}
+.deteail-images button{
+	float:right;
+	margin: 20px;
+}
+.detail-text{
+	margin: 30px auto;
+}
+.board-comment{
+	margin: 30px auto 150px;
 }
