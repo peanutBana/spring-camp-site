@@ -8,11 +8,49 @@
 </head>
 <body>
 	<div layout:fragment="content">
+		
 		<div class="search">
-			
+			<form action="/posts/search" method="get" class="search_frm">
+				<input type="text" placeholder="검색어를 입력해주세요.">
+				<button type="submit">검색</button>
+			</form>
 		</div>
-		<div class="cards">
-			<div class="card"></div>
+		<div class="post-cards">
+			<div class="post-card">
+				<div class="post-card-img"><a href="/posts/list/detail"><img src="https://m.thankqcamping.com/file/2019/03/12/2019031266949.55.jpg"/></a></div>
+				<div class="post-card-body">
+					<div class="post-card-title">title</div>
+					<div class="post-card-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ligula ac odio blandit congue. Proin placerat in 	</div>
+					<div class="like&comment">♥ 3 | ▤ 2 </div>
+				</div>				
+			</div>
+			<div class="post-card">
+				<div class="post-card-img"><a href="/list/detail"><img src="https://m.thankqcamping.com/file/2019/03/12/2019031266949.55.jpg"/></a></div>
+				<div class="post-card-body">
+					<div class="post-card-title">title</div>
+					<div class="post-card-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ligula ac odio blandit congue. Proin placerat in 	</div>
+					<div class="like&comment">♥ 3 | ▤ 2 </div>
+				</div>				
+			</div>
+			<div class="post-card">
+				<div class="post-card-img"><a href="/list/detail"><img src="https://m.thankqcamping.com/file/2019/03/12/2019031266949.55.jpg"/></a></div>
+				<div class="post-card-body">
+					<div class="post-card-title">title</div>
+					<div class="post-card-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ligula ac odio blandit congue. Proin placerat in 	</div>
+					<div class="like&comment">♥ 3 | ▤ 2 </div>
+				</div>				
+			</div>	
+		</div>
+		<div class="paging">
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+			    <li class="page-item"><a class="page-link" href="#">1</a></li>
+			    <li class="page-item"><a class="page-link" href="#">2</a></li>
+			    <li class="page-item"><a class="page-link" href="#">3</a></li>
+			    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+			  </ul>
+			</nav>
 		</div>
 	</div>
 </body>

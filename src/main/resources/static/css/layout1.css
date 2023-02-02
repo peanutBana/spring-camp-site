@@ -1,74 +1,82 @@
 @charset "UTF-8";
 
-html{
+html {
 	position: relative;
 	min-height: 100%;
 	marginL: 0;
 	padding: 0;
 	background: #f9f9f9;
 }
-.header{
+
+.header {
 	display: flex;
 	flex-direction: row;
 	border: 1px solid black;
 	border-radius: 30px;
-	height: 80px; 
+	height: 80px;
 	line-height: 80px;
-}
-body{
-	min-height: 100%;
-	width: 1400px;
-    margin: 0 auto;
+	height: 80px;
+	background-image: url("/images/mil.jpg");
 }
 
-footer{
+body {
+	min-height: 100%;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+footer {
 	position: absolute;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	width: 100%;
 	padding: 15px 0;
-	text-aligh: center; 	
+	text-aligh: center;
 }
-.icon{
+
+.icon {
 	width: 17.8%;
 	text-align: center;
 }
-.icon img{
+
+.icon img {
 	width: 80px;
 	height: 80px;
 }
-.title{
-	width: 64.4%;
+
+.title {
+	width: 64.4%;	
+	font-size: 40px;
+	color: white;
 	text-align: center;
 }
-.auth{
+
+.auth {
 	width: 17.8%;
-	display:flex;
+	display: flex;
 	text-align: center;
 }
 
-.content{ 
-	width: 1200px;
-	border: 1px solid red;
-} 
-
-.carousel{
-	
+.content {
+	width: 800px; 
 	
 }
 
-.carousel-inner{
+.carousel {
+	
+}
+
+.carousel-inner {
 	width: 800px;
 }
 
-.section{
-  	display:flex;
-	
+.section {
+	display: flex;
 }
 
-.mid{
-	display:flex;
+.mid {
+	display: flex;
 	flex-direction: row;
 	margin: 10px 0;
 	padding: 10px 0;
@@ -76,154 +84,213 @@ footer{
 	border-radius: 30px; */
 }
 
-.content-items{
-	margin : 50px auto;	
-	width: 800px;	
+.content-items {
+	margin: 50px auto;
+	width: 800px;
 }
 
-
-.site-info{
+.site-info {
 	width: 48%;
 }
 
-.exhibition{
+ul li {
+	list-style: none;
+}
+
+.exhibition {
 	width: 48%;
 }
+
 .v-line {
-  border-left : 1px solid #000;
-  height : 120px;
-  width: 2%;
-}
-.card-section{
-	display:flex;	
+	border-left: 1px solid #000;
+	height: 120px;
+	width: 2%;
 }
 
-.card{
-	width:30%;
-	margin:5px;
+.card-section {
+	display: flex;
 }
-.card img{
+
+.card {
+	width: 30%;
+	margin: 5px;
+}
+
+.card img {
 	transition: 0.3s;
 }
-.card a:hover img{
+
+.card a:hover img {
 	transform: scale(1.1);
 }
-.card a{
-	display:block;
-	overflow:hidden;
+
+.card a {
+	display: block;
+	overflow: hidden;
 	text-decoration: none;
 	text-color: black;
 }
 
-p{
+p {
 	font-size: 24px;
 }
 
-.auth ul li{
+.auth ul li {
 	list-style: none;
+}
+/*사이드 바*/
+#page-wrapper {
+	padding-left: 200px;
+}
+
+#sidebar-wrapper {
+	width: 250px;
+	height: 100%;
+	margin-left: -200px;
+	background: linear-gradient(180deg, #e69046, #f6d299);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#page-content-wrapper {
+	width: 100%;
+	padding: 20px;
+}
+/* 사이드바 스타일 */
+.sidebar-nav {
+	width: 250px;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	float: left;
+}
+
+.sidebar-nav li {
+	line-height: 2.8em;
+	text-align: center;
+}
+
+.sidebar-nav li a {
+	display: block;
+	text-decoration: none;
+	color: #999;
+	transition: 0.5s;
+}
+
+.sidebar-nav li a:hover {
+	color: #fff;
+	background: #ebad6d;
+}
+
+.sidebar-nav>.sidebar-brand {
+	font-size: 1.3em;
+	line-height: 3em;
+}
+
+/*로그인화면*/
+.login_frm {
+	border: 1px solid blue;
+	border-radius: 30px;
+	padding: 50px;
+	width: 500px;
+	margin: 50px auto;
+	height: 350px;
+	color: white;
+	background-image: url("/images/mil.jpg");
 	
 }
- /*사이드 바*/
- #page-wrapper {
-    padding-left: 200px;
-  }
-  
-  #sidebar-wrapper {
-    width: 250px;
-    height: 100%;
-    margin-left: -200px;
-    background : linear-gradient(180deg, #e69046 , #f6d299);
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  
-  #page-content-wrapper {
-    width: 100%;
-    padding: 20px;
-  }
-  /* 사이드바 스타일 */
-  
-  .sidebar-nav {
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-   	position: fixed;
-  }
-  
- .sidebar-nav li {
-    text-indent: 1.5em;
-    line-height: 2.8em;
+
+.login_frm p {
 	text-align: center;
+}
+
+.login_input {
 	display: flex;
-  }
-  
-  .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999;
-  }
-  
-  .sidebar-nav li a:hover {
-    color: #fff;
-    background: #000;
-  }
-  
-  .sidebar-nav > .sidebar-brand {
-    font-size: 1.3em;
-    line-height: 3em;
-    
-  }
-  
-  /*로그인화면*/
-  .login_frm{
-  	border: 1px solid blue;
-  	border-radius: 30px;
-  	padding: 50px;
-  	width: 500px;
-  	margin: 50px auto;
-  	height: 350px;
-  }
-  .login_frm p{
-  	text-align: center;
-  }
-  
-  .login_input{
-  	display: flex;
-  	width: 400px;
-  	margin-bottom: 20px;
-  }
-  
-  label{
-  	width: 150px;
-  	
-  }
-  
-  .login_buttons{
-  	text-align: right;
-	margin-top:50px;
-  }
-  
-  /*회원가입 화면*/
-  .join_frm{
-  	border: 1px solid blue;
-  	border-radius: 30px;
-  	padding: 50px;
-  	width: 500px;
-  	margin: 50px auto;
-  	height: 400px;
-  }
-  
-  .join_frm p{
-  	text-align: center;
-  }
-  
-  
-  .join_button{
-  	text-align: center;
+	width: 400px;
+	margin-bottom: 20px;
+}
+
+label {
+	width: 150px;
+}
+
+.login_buttons {
+	text-align: right;
+	margin-top: 50px;
+}
+
+/*회원가입 화면*/
+.join_frm {
+	border: 1px solid #fed08c;
+	border-radius: 30px;
+	padding: 50px;
+	width: 500px;
+	margin: 50px auto;
+	height: 400px;
+	color: white;
+	background: #fed08c;
+	background-image: url("/images/mil.jpg");
+	
+}
+
+.join_frm p {
+	text-align: center;
+}
+
+.join_button {
+	text-align: center;
 	margin-top: 30px;
-  	
-  	
-  }
-  	
- 
+}
+
+/*post list*/
+.search{
+	width: 700px;
+	margin: 30px auto;
+}
+.search button{
+	width: 60px;
+	height: 30px;
+	border-radius: 20px;
+	
+}
+.search_frm{
+	text-align: center;
+}
+
+.post-card {
+	border: 1px solid green;
+	border-radius: 20px;
+	display: flex;
+	width: 700px;
+	height: 300px;
+	margin: 30px auto 50px;
+}
+
+.post-card-body {
+	padding: 30px;
+}
+
+.post-card-title {
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+.post-card-img {
+	width: 35%;
+}
+
+.post-card-img img {
+	width: 225px;
+	height: 300px;
+	border-radius: 20px;
+	object-fit: none;
+}
+
+.post-card-body {
+	width: 65%;
+}
+
+.paging{
+	width: 200px;
+	margin: 0 auto 100px;
+}

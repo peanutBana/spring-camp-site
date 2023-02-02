@@ -16,5 +16,11 @@ public class PostController {
 	public String postList(){
 		return "post/postList";
 	}
+	
+//	@GetMapping(value="/list/{postNm}")
+	@GetMapping(value="/list/detail")
+	public String postDetail() {
+		return "post/postDetail";
+	}
 
 }
