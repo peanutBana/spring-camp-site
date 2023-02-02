@@ -318,10 +318,10 @@ label {
 }
 
 /*post detail*/
-.deteail-images{
+.detail-images{
 	margin: 30px auto;
 }
-.deteail-images button{
+.detail-images button{
 	float:right;
 	margin: 20px;
 }
