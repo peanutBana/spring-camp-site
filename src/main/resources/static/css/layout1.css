@@ -5,7 +5,7 @@ html {
 	min-height: 100%;
 	marginL: 0;
 	padding: 0;
-	background: #f9f9f9;
+	background: black;
 }
 
 .header {
@@ -17,6 +17,7 @@ html {
 	line-height: 80px;
 	height: 80px;
 	background-image: url("/images/mil.jpg");
+	color: #ff3d0f;
 }
 
 body {
@@ -24,6 +25,8 @@ body {
 	width: 1200px;
 	margin: 0 auto;
 	display: relative;
+	background: #525634;
+	border-radius: 30px;
 }
 
 footer {
@@ -49,8 +52,9 @@ footer {
 .title {
 	width: 64.4%;	
 	font-size: 40px;
-	color: white;
+	color: #ff3d0f;
 	text-align: center;
+	font-weight: bold;
 }
 
 .auth {
@@ -59,11 +63,16 @@ footer {
 	text-align: center;
 }
 .nav-item{
-	color: white;
+	color: #ff3d0f;
+	font-size: 20px;
+	font-weight: bold;
+	
 }
 
 .content {
 	width: 800px; 
+	color: #c3ab7a;
+	padding: 50px;
 	
 }
 
@@ -138,7 +147,7 @@ ul li {
 }
 
 p {
-	font-size: 24px;
+	font-size: 30px;
 }
 
 .auth ul li {
@@ -186,7 +195,7 @@ p {
 
 .sidebar-nav li a:hover {
 	color: #fff;
-	background: #ebad6d;
+	background: #c3ab7a;
 }
 
 .sidebar-nav>.sidebar-brand {
@@ -196,7 +205,6 @@ p {
 
 /*로그인화면*/
 .login_frm {
-	border: 1px solid blue;
 	border-radius: 30px;
 	padding: 50px;
 	width: 500px;
@@ -217,8 +225,8 @@ p {
 	margin-bottom: 50px; 
 }
 
-label {
-	width: 150px;
+.login_input label {
+	width: 100px;
 }
 
 .login_buttons {
@@ -255,7 +263,9 @@ label {
 	margin: 30px auto;
 }
 .search input{
-	 border-radius: 30px
+	 border-radius: 20px;
+	 height: 50px;
+	 padding: 10px;
 }
 .search button{
 	width: 60px;
@@ -268,7 +278,6 @@ label {
 }
 
 .post-card {
-	border: 1px solid green;
 	border-radius: 20px;
 	display: flex;
 	width: 700px;
@@ -298,7 +307,8 @@ label {
 }
 
 .post-card-img {
-	width: 35%;
+	width: 255px;
+	height: 300px;
 }
 
 .post-card-img img {
@@ -318,16 +328,55 @@ label {
 }
 
 /*post detail*/
+.detail-images-header{
+	display: flex;
+	justify-content: space-between;
+}
+.detail-images-header button{
+	width: 90px;
+	height: 40px;
+}
 .detail-images{
-	margin: 30px auto;
+	margin: 50px auto;
 }
 .detail-images button{
 	float:right;
 	margin: 20px;
+	border-radius: 20px;
 }
 .detail-text{
-	margin: 30px auto;
+	margin: 50px auto;
 }
 .board-comment{
-	margin: 30px auto 150px;
+	margin: 50px auto 150px;
 }
+.board-comment input{
+	line-height: 30px;
+	width: 400px;
+	border-radius: 20px;
+}
+
+.board-comment-header{
+	display: flex;
+	justify-content: space-between;
+}
+.like{
+	font-size: 30px;
+	line-height: 30px;
+}
+
+/*map section*/
+.kakao-map{
+	margin: 50px auto;
+	
+}
+
+.map-camp-info{
+	margin: 50px auto 150px;	
+}
+
+.map-camp-info dt{
+	font-size: 24px; 
+}
+
+

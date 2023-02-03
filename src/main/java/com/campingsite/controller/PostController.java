@@ -22,5 +22,11 @@ public class PostController {
 	public String postDetail() {
 		return "post/postDetail";
 	}
+	
+	@GetMapping(value="/map")
+	public String postMap() {
+		return "post/campMap";
+	}
+
 
 }

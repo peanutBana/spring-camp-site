@@ -9,8 +9,10 @@
 <body>
 	<div layout:fragment="content">
 		<div class="detail-images">
-			<p>[경기 용인] 숲속의 아침 캠핑장 </p>
-			<button onClick="location.href='/users/new'">예약하기</button>
+			<div class="detail-images-header">
+				<p>[경기 용인] 숲속의 아침 캠핑장 </p>
+				<button type="button" onclick="location.href='/users/login'">예약하기</button>
+			</div>
 			<div id="carouselExample" class="carousel slide">
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
@@ -26,26 +28,12 @@
 			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="visually-hidden">Previous</span>
-			  </button>
+<!-- 			  </button> -->
 			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
 			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			    <span class="visually-hidden">Next</span>
 			  </button>
 			</div>
-		</div>
-		<div class="kmap">
-			<div id="map" style="width:100%;height:350px;"></div>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22c742f96219ac4cd7d9d859580b46b"></script>
-			<script>
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = { 
-			        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			        level: 3 // 지도의 확대 레벨
-			    };
-			
-			// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-			var map = new kakao.maps.Map(mapContainer, mapOption); 
-			</script>
 		</div>
 		<div class="detail-text">
 			<p>board_text</p>
@@ -54,7 +42,20 @@
 			</div>
 		</div>
 		<div class="board-comment">
-			<p>board_comment</p>
+			<div class="board-comment-header">
+				<p>댓글</p>
+				<div class="comment-input">
+				<form method="post" action="posts/detail/comment">
+					<label for="comment">댓글 입력:</label>
+					<input type="text" id="comment"/>	
+					<button type="submit">등록</button>			
+				</form>
+				</div>
+				<div class="like">
+					♡
+				</div>
+			</div>
+			
 			<ul>
 				<li>user1 : aaaaaaa</li>
 				<li>user2 : aaaaaaa</li>

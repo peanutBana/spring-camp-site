@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="kakao-map">
+			<p>캠핑장 찾기</p>
+			<div id="map" style="width:100%; height:500px;"></div>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22c742f96219ac4cd7d9d859580b46b"></script>
+			<script>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };
+				// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+				var map = new kakao.maps.Map(mapContainer, mapOption);
+				var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+	
+				// 마커를 생성합니다
+				var marker = new kakao.maps.Marker({
+				    position: markerPosition
+				});
+	
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map);
+			</script>
+		</div>
+		<div class="map-camp-info">
+			<p>조회 결과</p>
+			<dl>
+				<dt>[camp name]</dt>
+				<dd>숲속의 아침 오토캠핑장</dd>
+				<dt>[address]</dt>
+				<dd>경기 용인시 처인구 원삼면 사암리</dd> 
+				<dt>[tel]</dt>
+				<dd>031-333-4563</dd>
+				<dt>[facilities]</dt>
+				<dd>전기, 온수, 화장실, 샤워실, 취사장</dd>
+				<dt>[introduciton]</dt>
+				<dd>숲속의 아침 오토캠핑장은 경기 용인시 처인구 원삼면 사암리 에 위치하고 있으며 잔디, 파쇄석 사이트가 총 15개로 구성되어 있고, 전기, 온수, 화장실, 샤워실, 취사장 등의 편의시설을 이용할 수 있습니다.
+인근에 가볼만한 관광지는 농도원목장, 용인농촌테마파크, 법륜사가 있고, 주변에 다른 캠핑장으로 용인호수오토캠핑장, 용인 동막골캠핑장, 황금캠핑장, 용인해두리 오토 캠핑장, 은이골 농원이 있습니다.</dd>
+				
+			</dl>
+		</div>
+	</div>
+	
+</body>
+</html>
