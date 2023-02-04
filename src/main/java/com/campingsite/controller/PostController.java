@@ -17,6 +17,17 @@ public class PostController {
 		return "post/postList";
 	}
 	
+	@GetMapping(value="/list2")
+	public String postList2(){
+		return "post/postList2";
+	}
+	
+	//글쓰기 화면
+	@GetMapping(value="/new")
+	public String postWrite(){
+		return "post/writePost";
+	}
+	
 //	@GetMapping(value="/list/{postNm}")
 	@GetMapping(value="/list/detail")
 	public String postDetail() {

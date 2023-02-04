@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="search">
+			<form action="/posts/search2" method="get" class="search_frm">
+				<input type="text" placeholder="검색어를 입력해주세요.">
+				<button type="submit">검색</button>
+			</form>
+			<div class="make-post">
+				<button type="button" onclick="location.href='/posts/new'">글쓰기</button>
+			</div>
+		</div>
+		<div class="post-list">
+				<table>
+					<thead>
+						<tr>
+							<th>게시물 번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성 시각</th>
+							<th>조회수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>01</td>
+							<td>동탄 청려 수련원 후기~</td>
+							<td>박*우</td>
+							<td>23/02/04 17:35:07</td>
+							<td>7</td>
+						</tr>
+						<tr>
+							<td>02</td>
+							<td>태안 캠핑드림 강추해요!</td>
+							<td>김*범</td>
+							<td>23.01.27 09:04:33</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>03</td>
+							<td>겨울 혹한기 캠핑 살아남는 법</td>
+							<td>김*서</td>
+							<td>23.02.03 23:39:01</td>
+							<td>14</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+	</div>
+</body>
+</html>

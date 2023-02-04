@@ -1,4 +1,3 @@
-@charset "UTF-8";
 
 html {
 	position: relative;
@@ -277,6 +276,10 @@ p {
 	text-align: center;
 }
 
+.search_frm input{
+	width: 400px;
+}
+
 .post-card {
 	border-radius: 20px;
 	display: flex;
@@ -321,12 +324,56 @@ p {
 .post-card-body {
 	width: 65%;
 }
-
 .paging{
-	width: 200px;
-	margin: 0 auto 100px;
+	
+
 }
 
+	/* width: 200px;
+	margin: 0 auto 100px; */
+}
+
+/*post-list2*/
+.post-list{
+	width: 700px;
+	
+}
+
+table{
+	border:1px solid black;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	border-left:none;
+	border-right:none;
+}
+table th, td{
+	border:1px solid black;
+	padding: 10px;
+	border-left:none;
+	border-right:none;
+}
+thead th{
+	text-align:center;
+}
+thead th:nth-child(2){
+	width: 200px;	
+}
+/*write post*/
+.info-input{
+		
+}
+
+.info-input li label{
+	font-size: 20px;
+	width: 120px;
+	margin: 20px;	
+}
+
+.img-input button{
+	float: right;
+	
+}
 /*post detail*/
 .detail-images-header{
 	display: flex;
@@ -366,9 +413,12 @@ p {
 }
 
 /*map section*/
+#map{
+	border-radius: 30px;
+}
+
 .kakao-map{
 	margin: 50px auto;
-	
 }
 
 .map-camp-info{
