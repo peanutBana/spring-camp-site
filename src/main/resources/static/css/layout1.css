@@ -370,12 +370,31 @@ thead th:nth-child(2){
 	margin: 20px;	
 }
 
+.img-input{
+	margin: 50px 0;
+}
+
 .img-input button{
 	float: right;
 	
 }
 .info-input input{
 	width: 300px;
+}
+
+.write-submit{
+	margin: 50px 0;
+	float: right;
+	width: 50px;
+	height: 30px;
+	border-radius: 20px;
+}
+
+
+.text-input textarea{
+	margin: 0 50px;
+	width: 400px;
+	height: 200px;
 }
 
 /*post detail*/
