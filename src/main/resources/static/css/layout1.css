@@ -374,6 +374,10 @@ thead th:nth-child(2){
 	float: right;
 	
 }
+.info-input input{
+	width: 300px;
+}
+
 /*post detail*/
 .detail-images-header{
 	display: flex;
