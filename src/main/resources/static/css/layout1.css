@@ -14,7 +14,6 @@ html {
 	border-radius: 30px;
 	height: 80px;
 	line-height: 80px;
-	height: 80px;
 	background-image: url("/images/mil.jpg");
 	color: #ff3d0f;
 }
@@ -235,7 +234,7 @@ p {
 
 /*회원가입 화면*/
 .join_frm {
-	border: 1px solid #fed08c;
+	border: 2px solid #fed08c;
 	border-radius: 30px;
 	padding: 50px;
 	width: 500px;
@@ -287,6 +286,9 @@ p {
 	height: 300px;
 	margin: 30px auto 50px;
 	position: relative;
+}
+.make-post button{
+	float: right:
 }
 
 .post-card-body {
@@ -354,10 +356,9 @@ table th, td{
 	border-right:none;
 }
 thead th{
-	text-align:center;
 }
 thead th:nth-child(2){
-	width: 200px;	
+	/* width: 200px;	 */
 }
 /*write post*/
 .info-input{
@@ -399,6 +400,7 @@ thead th:nth-child(2){
 
 /*post detail*/
 .detail-images-header{
+	width: 800px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -452,4 +454,39 @@ thead th:nth-child(2){
 	font-size: 24px; 
 }
 
+/*admin setting*/
+.admin-post-list{
+	margin: 50px 0;
+}
+
+/*reservation*/
+.reservation {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	background: #c3ab7a;
+	color: #535634;
+	margin: 0 auto;
+	border: 1px solid;
+	border-radius: 30px;
+	padding: 20px;
+}
+
+.reservation h2{
+	text-align: center;
+}
+
+.reservation p{
+	font-size: 16px;
+}
+
+.reservation button{
+	margin-top: 20px;
+	float: right;
+	height: 50px;
+	border-radius: 20px;
+}
+.reserve-item{
+	margin: 10px;
+}
 

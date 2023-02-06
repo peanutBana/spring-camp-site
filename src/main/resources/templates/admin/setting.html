@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="admin-user-list">
+			<p>[사용자 리스트]</p>
+			<table>
+				<thead>
+					<tr>
+						<th>user_id</th>
+						<th>email</th>
+						<th>name</th>
+						<th>password</th>
+						<th>role</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>001</td>
+						<td>alsdn0321@naver.com</td>
+						<td>박민우</td>
+						<td>*********</td>
+						<td>ADMIN</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td>rudqja0821@naver.com</td>
+						<td>김경범</td>
+						<td>*********</td>
+						<td>USER</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>haseo777@naver.com</td>
+						<td>김하서</td>
+						<td>*********</td>
+						<td>USER</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> 
+		<div class="admin-post-list">
+			<p>[게시물 리스트]</p>
+			<table>
+				<thead>
+					<tr>
+						<th>post_id</th>
+						<th>post_title</th>
+						<th>user_id</th>
+						<th>post_type</th>
+						<th>reg_date</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>01</td>
+						<td>동탄 청려 수련원 후기~</td>
+						<td>001</td>
+						<td>ADMIN</td>
+						<td>23/02/04</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+					<tr>
+						<td>02</td>
+						<td>태안 캠핑드림 강추해요!</td>
+						<td>002</td>
+						<td>USER</td>
+						<td>23.01.27</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr><tr>
+						<td>03</td>
+						<td>겨울 혹한기 캠핑 살아남기</td>
+						<td>003</td>
+						<td>USER</td>
+						<td>23.02.03</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> 
+		<div class="admin-reservation-list">
+			<p>[예약내역 리스트]</p>
+			<table>
+				<thead>
+					<tr>
+						<th>resv_id</th>
+						<th>user_id</th>
+						<th>camp_id</th>
+						<th>chk_in</th>
+						<th>price</th>
+						<th>reg_date</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>001</td>
+						<td>043</td>
+						<td>011</td>
+						<td>23.01.11</td>
+						<td>100,000원</td>
+						<td>23.01.01</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td>071</td>
+						<td>030</td>
+						<td>23.02.01</td>
+						<td>40,000원</td>
+						<td>23.01.02</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>013</td>
+						<td>059</td>
+						<td>23.03.13</td>
+						<td>80,000원</td>
+						<td>23.01.04</td>
+						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> 
+	</div>
+	
+</body>
+</html>
