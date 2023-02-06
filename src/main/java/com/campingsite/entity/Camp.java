@@ -21,7 +21,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Camp extends BaseEntity{
+public class Camp {
 	@Id
 	@Column(name="camp_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

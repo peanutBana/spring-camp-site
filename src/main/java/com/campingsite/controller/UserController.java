@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.campingsite.dto.UserFormDto;
 import com.campingsite.entity.User;
+import com.campingsite.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(value = "/users")
 @RequiredArgsConstructor
 public class UserController {
+	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
 	
 	@GetMapping(value="/new")
@@ -36,6 +38,7 @@ public class UserController {
 		}
 		try {
 			User user = User.createUser(userFormDto, passwordEncoder);
+			userService.saveUser(user);
 		}catch(IllegalStateException e) {
 			model.addAttribute("errorMessage",e.getMessage());
 			return "user/userForm";	
@@ -43,7 +46,6 @@ public class UserController {
 		
 		return "redirect:/";
 	}
-	
 	
 	//로그인 화면
 	@GetMapping(value="/login")

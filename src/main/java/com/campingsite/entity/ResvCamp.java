@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ResvCamp extends BaseEntity{
+public class ResvCamp{
 	@Id
 	@Column(name = "resv_camp_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

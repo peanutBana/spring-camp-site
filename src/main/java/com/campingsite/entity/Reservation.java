@@ -31,7 +31,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Reservation extends BaseEntity{
+public class Reservation{
 	@Id
 	@Column(name = "resv_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.campingsite.entity.BaseEntity;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +17,7 @@ import lombok.Setter;
 @Table(name="camp_img")	//테이블 명 설정
 @Getter
 @Setter
-public class CampImg extends BaseEntity{
+public class CampImg{
 	@Id//
 	@Column(name = "camp_img_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)

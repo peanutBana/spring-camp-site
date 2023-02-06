@@ -23,7 +23,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class User extends BaseEntity{
+public class User{
 	@Id
 	@Column(name="user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +33,6 @@ public class User extends BaseEntity{
 	
 	@Column(unique = true)
 	private String email;
-	
 	
 	private String password;
 	
@@ -52,4 +51,5 @@ public class User extends BaseEntity{
 		
 		return user;
 	}
+
 }
