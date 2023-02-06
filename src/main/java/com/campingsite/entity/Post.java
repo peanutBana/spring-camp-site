@@ -11,7 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.camoingsite.constant.PostType;
+import com.campingsite.constant.PostType;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

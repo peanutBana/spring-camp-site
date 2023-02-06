@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.camoingsite.constant.CampType;
+import com.campingsite.constant.CampType;
 
 import lombok.Getter;
 import lombok.Setter;

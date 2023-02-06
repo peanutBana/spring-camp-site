@@ -1,4 +1,4 @@
-package com.camoingsite.constant;
+package com.campingsite.constant;
 
 public enum ResvStatus {
 	SELL, SOLD_OUT

@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.campingsite.entity.User;
-import com.camoingsite.constant.ResvStatus;
+import com.campingsite.constant.ResvStatus;
 import com.campingsite.entity.ResvCamp;
 
 import lombok.Getter;

@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.camoingsite.constant.Role;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.campingsite.constant.Role;
+import com.campingsite.dto.UserFormDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +24,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class User extends BaseEntity{
-	
 	@Id
 	@Column(name="user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,11 +32,24 @@ public class User extends BaseEntity{
 	private String name;
 	
 	@Column(unique = true)
-	private Long email;
+	private String email;
 	
 	
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
+		User user = new User();
+		user.setName(userFormDto.getName());
+		user.setEmail(userFormDto.getEmail());
+
+		String password = passwordEncoder.encode(userFormDto.getPassword());
+		user.setPassword(password);
+		
+		user.setRole(Role.USER);
+		
+		return user;
+	}
 }

@@ -1,24 +1,53 @@
 package com.campingsite.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.campingsite.dto.UserFormDto;
+import com.campingsite.entity.User;
+
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping(value = "/users")
 @RequiredArgsConstructor
 public class UserController {
-
+	private final PasswordEncoder passwordEncoder;
+	
+	@GetMapping(value="/new")
+	public String MemberForm(Model model){
+		model.addAttribute("userFormDto", new UserFormDto());
+		return "user/userForm"; 
+	}
+	
+	@PostMapping(value="/new")
+	public String MemberForm(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model){
+		
+		//에러 있으면 userForm으로
+		if(bindingResult.hasErrors()) {
+			return "user/userForm";			
+		}
+		try {
+			User user = User.createUser(userFormDto, passwordEncoder);
+		}catch(IllegalStateException e) {
+			model.addAttribute("errorMessage",e.getMessage());
+			return "user/userForm";	
+		}
+		
+		return "redirect:/";
+	}
+	
+	
 	//로그인 화면
 	@GetMapping(value="/login")
 	public String loginMember() {
 		return "user/userLoginForm";
-	}
-	
-	@GetMapping(value="/new")
-	public String MemberForm(){
-		return "user/userForm"; 
 	}
 }
