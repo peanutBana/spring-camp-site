@@ -1,4 +1,3 @@
-
 html {
 	position: relative;
 	min-height: 100%;
@@ -48,7 +47,7 @@ footer {
 }
 
 .title {
-	width: 64.4%;	
+	width: 64.4%;
 	font-size: 40px;
 	color: #ff3d0f;
 	text-align: center;
@@ -60,18 +59,17 @@ footer {
 	display: flex;
 	text-align: center;
 }
-.nav-item{
+
+.nav-item {
 	color: #ff3d0f;
 	font-size: 20px;
 	font-weight: bold;
-	
 }
 
 .content {
-	width: 800px; 
+	width: 800px;
 	color: #c3ab7a;
 	padding: 50px;
-	
 }
 
 .carousel {
@@ -117,9 +115,11 @@ ul li {
 	height: 150px;
 	width: 2%;
 }
-.admin-sgt{
+
+.admin-sgt {
 	margin-bottom: 150px;
 }
+
 .card-section {
 	display: flex;
 }
@@ -206,30 +206,34 @@ p {
 	border-radius: 30px;
 	padding: 50px;
 	width: 500px;
+	height: 200px;
 	margin: 50px auto;
 	height: 350px;
 	color: white;
 	background-image: url("/images/mil.jpg");
-	
 }
 
-.login_frm p {
+.login_frm h3 {
 	text-align: center;
 }
 
 .login_input {
 	display: flex;
 	width: 400px;
-	margin-bottom: 50px; 
+	margin-bottom: 50px;
+}
+.log_frm{
+	height: 200px;
 }
 
 .login_input label {
 	width: 100px;
 }
-
+.login-bottom{
+	display:flex;
+}
 .login_buttons {
 	text-align: right;
-	margin-top: 40px;
 }
 
 /*회원가입 화면*/
@@ -243,39 +247,39 @@ p {
 	color: white;
 	background: #fed08c;
 	background-image: url("/images/mil.jpg");
-	
 }
 
-.join_frm p {
+.join_frm h3 {
 	text-align: center;
 }
 
 .join_button {
 	text-align: center;
-
 }
 
 /*post list*/
-.search{
+.search {
 	width: 700px;
 	margin: 30px auto;
 }
-.search input{
-	 border-radius: 20px;
-	 height: 50px;
-	 padding: 10px;
+
+.search input {
+	border-radius: 20px;
+	height: 50px;
+	padding: 10px;
 }
-.search button{
+
+.search button {
 	width: 60px;
 	height: 30px;
 	border-radius: 20px;
-	
 }
-.search_frm{
+
+.search_frm {
 	text-align: center;
 }
 
-.search_frm input{
+.search_frm input {
 	width: 400px;
 }
 
@@ -287,7 +291,8 @@ p {
 	margin: 30px auto 50px;
 	position: relative;
 }
-.make-post button{
+
+.make-post button {
 	float: right:
 }
 
@@ -300,15 +305,14 @@ p {
 	margin-bottom: 10px;
 }
 
-.post-card-content{
+.post-card-content {
 	margin-bottom: 10px;
-	
 }
 
-.like-comment{
+.like-comment {
 	position: absolute;
 	right: 10px;
- 	bottom: 10px;
+	bottom: 10px;
 }
 
 .post-card-img {
@@ -326,64 +330,68 @@ p {
 .post-card-body {
 	width: 65%;
 }
-.paging{
-	
 
+.paging {
+	
 }
 
-	/* width: 200px;
+/* width: 200px;
 	margin: 0 auto 100px; */
 }
 
 /*post-list2*/
-.post-list{
+.post-list {
 	width: 700px;
-	
 }
 
-table{
-	border:1px solid black;
+table {
+	border: 1px solid black;
 	margin: 0 auto;
 	width: 100%;
 	height: 100%;
-	border-left:none;
-	border-right:none;
+	border-left: none;
+	border-right: none;
 }
-table th, td{
-	border:1px solid black;
+
+table th, td {
+	border: 1px solid black;
 	padding: 10px;
-	border-left:none;
-	border-right:none;
+	border-left: none;
+	border-right: none;
 }
-thead th{
+
+thead th {
+	
 }
-thead th:nth-child(2){
+
+thead th:nth-child(2) {
 	/* width: 200px;	 */
+	
 }
 /*write post*/
-.info-input{
-		
+.info-input {
+	
 }
 
-.info-input li label{
+.info-input li label {
 	font-size: 20px;
 	width: 120px;
-	margin: 20px;	
+	margin: 20px;
 }
 
-.img-input{
+.img-input {
 	margin: 50px 0;
 }
 
-.img-input button{
+.img-input button {
 	float: right;
-	
 }
-.info-input input{
+
+.info-input input {
 	width: 300px;
 }
 
-.write-submit{
+.write-submit {
 	margin: 50px 0;
 	float: right;
 	width: 50px;
@@ -391,71 +399,77 @@ thead th:nth-child(2){
 	border-radius: 20px;
 }
 
-
-.text-input textarea{
+.text-input textarea {
 	margin: 0 50px;
 	width: 400px;
 	height: 200px;
 }
 
 /*post detail*/
-.detail-images-header{
+.detail-images-header {
 	width: 800px;
 	display: flex;
 	justify-content: space-between;
 }
-.detail-images-header button{
+
+.detail-images-header button {
 	width: 90px;
 	height: 40px;
 }
-.detail-images{
+
+.detail-images {
 	margin: 50px auto;
 }
-.detail-images button{
-	float:right;
+
+.detail-images button {
+	float: right;
 	margin: 20px;
 	border-radius: 20px;
 }
-.detail-text{
+
+.detail-text {
 	margin: 50px auto;
 }
-.board-comment{
+
+.board-comment {
 	margin: 50px auto 150px;
 }
-.board-comment input{
+
+.board-comment input {
 	line-height: 30px;
 	width: 400px;
 	border-radius: 20px;
 }
 
-.board-comment-header{
+.board-comment-header {
 	display: flex;
 	justify-content: space-between;
 }
-.like{
+
+.like {
 	font-size: 30px;
 	line-height: 30px;
 }
 
 /*map section*/
-#map{
+#map {
 	border-radius: 30px;
 }
 
-.kakao-map{
+.kakao-map {
 	margin: 50px auto;
 }
 
-.map-camp-info{
-	margin: 50px auto 150px;	
+.map-camp-info {
+	margin: 50px auto 150px;
 }
 
-.map-camp-info dt{
-	font-size: 24px; 
+.map-camp-info dt {
+	font-size: 24px;
 }
 
 /*admin setting*/
-.admin-post-list{
+.admin-post-list {
 	margin: 50px 0;
 }
 
@@ -472,21 +486,21 @@ thead th:nth-child(2){
 	padding: 20px;
 }
 
-.reservation h2{
+.reservation h2 {
 	text-align: center;
 }
 
-.reservation p{
+.reservation p {
 	font-size: 16px;
 }
 
-.reservation button{
+.reservation button {
 	margin-top: 20px;
 	float: right;
 	height: 50px;
 	border-radius: 20px;
 }
-.reserve-item{
+
+.reserve-item {
 	margin: 10px;
 }
-

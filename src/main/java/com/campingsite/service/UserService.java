@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService{
 	
 	public User saveUser(User user) {
 		validateDuplicateUser(user);
-		return userRepository.findByEmail(user.getEmail());
+		return userRepository.save(user);
 	}
 	
 	private void validateDuplicateUser(User user) {
