@@ -34,8 +34,8 @@ public class Post {
 	@Enumerated(EnumType.STRING)
 	private PostType postType;
 	
-	@Column()
-	private int linkCount;
+	@Column(nullable=false)
+	private int likeCount;
 	
 	@Lob
 	@Column(nullable=false)

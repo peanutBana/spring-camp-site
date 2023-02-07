@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
 <head>
@@ -14,7 +15,7 @@
 				<input type="text" placeholder="검색어를 입력해주세요.">
 				<button type="submit">검색</button>
 			</form>
-			<div class="make-post">
+			<div class="make-post" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 				<button type="button" onclick="location.href='/posts/new'">글쓰기</button>
 			</div>
 		</div>
