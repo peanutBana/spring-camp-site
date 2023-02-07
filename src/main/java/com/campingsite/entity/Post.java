@@ -12,6 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.campingsite.constant.PostType;
+import com.campingsite.dto.PostFormDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +27,7 @@ public class Post {
 	@Id
 	@Column(name="post_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long postId;
+	private Long Id;
 	
 	@Column(nullable=false)
 	private String postTitle;
@@ -46,4 +47,13 @@ public class Post {
 	
 	@JoinColumn(name="camp_id")
 	private int campId;
+	
+	public void updatePost(PostFormDto postFormDto) {
+		this.postTitle = postFormDto.getPostTitle();
+		this.postDetail = postFormDto.getPostDetail();
+		this.userId = postFormDto.getUserId();
+		this.Id = postFormDto.getId();		
+	}
+	
+	
 }

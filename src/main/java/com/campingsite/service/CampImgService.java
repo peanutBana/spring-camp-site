@@ -34,7 +34,7 @@ public class CampImgService {
 		//파일 업로
 		if(!StringUtils.isEmpty(oriImgName)) {
 			imgName = fileService.uploadFile(campImgLocation, oriImgName, campImgFile.getBytes());
-			imgUrl = "/images/item" + imgName;
+			imgUrl = "/images/camp_img" + imgName;
 		}
 		
 		campImg.updateCampImg(oriImgName, imgName, imgUrl);

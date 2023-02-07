@@ -53,21 +53,19 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<form action="posts/new" method="post">
+		<form method="post" enctype="multipart/form-data" th:object="${postFormDto}">
 			<p>게시글 작성</p>
+			<input type="hidden" th:field="*{id}" />
 			<div class="info-input">
 				<ul>
-					<li><label for="post-title">[제목]</label> <input type="text"
-						id="post-title" class="post-title" /></li>
-					<li><label for="post-author">[작성자]</label> <input type="text"
-						id="post-author" class="post-author" readonly /></li>
-					<li><label for="post-category">[숙박 유형]</label> <select
-						id="post-category">
-							<option value="캠핑">캠핑</option>
-							<option value="글램핑">글램핑</option>
-							<option value="카라반">카라반</option>
-							<option value="노지캠핑">노지캠핑</option>
-					</select></li>
+					<li>
+						<label for="post-title">[제목]</label> 
+						<input type="text" id="post-title" class="post-title" th:field="*{postTitle}"/>
+					</li>
+					<li>
+						<label for="post-author">[상세 설명]</label> 
+						<input type="text" id="post-author" class="post-author" th:field="*{postDetail}" readonly />
+					</li>
 				</ul>
 			</div>
 			<div class="img-input">
