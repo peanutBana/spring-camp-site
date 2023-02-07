@@ -29,11 +29,15 @@ public class CampImg{
 	
 	private String imgUrl;
 	
-	private String reqImgYn;
+	private String repImgYn;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "camp_id")
 	private Camp camp;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "post_id")
+	private Post post;
 
 	
 	
