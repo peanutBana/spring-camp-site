@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.campingsite.dto.PostFormDto;
 import com.campingsite.dto.PostSearchDto;
 import com.campingsite.entity.Post;
-import com.campingsite.service.PostService;
 
 import lombok.RequiredArgsConstructor;
 @Controller
@@ -29,97 +28,103 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PostController {
 	
-	private final PostService postService;
+//	private final PostService postService;
 	
 	//게시글 리스트 화면	
-	@GetMapping(value="/post/list")
+	@GetMapping(value="/posts/list")
 	public String postList(){
 		return "post/postList";
 	}
 	
-	@GetMapping(value="post/list2")
+	@GetMapping(value="posts/list2")
 	public String postList2(){
 		return "post/postList2";
 	}
 	
-	//post 등록
-	@GetMapping(value="post/new")
-	public String postNew(@Valid PostFormDto postFormDto, BindingResult bindingResult,Model model, 
-							@RequestParam("postImgFile") List<MultipartFile> postImgFileList){
-		if(bindingResult.hasErrors()) {
-			return "post/postForm";			
-		}
-		
-		//첫번째 이미지 있는지 검사
-		if(postImgFileList.get(0).isEmpty() && postFormDto.getId() == null) {
-			model.addAttribute("errorMessage", "post 상품 이미지는 필수 입력 값 입니다.");
-			return "post/postForm";		
-		}
-		
-		try {
-			postService.savePost(postFormDto, postImgFileList);
-		} catch (Exception e) {
-			model.addAttribute("errorMessage", "post 등록 중 에러가 발생했습니다.");
-			return "post/postForm";
-		}
-		
-		return "redirect:/";
-
-	}
-	
-	//post 수정 페이지 보기
-	@GetMapping(value="/post/{postId}")
-	public String postDtl(@PathVariable("ipostId") Long postId, Model model) {
-		try {
-			PostFormDto postFormdto = postService.getPostDtl(postId);
-			model.addAttribute(postFormdto);
-		} catch(EntityNotFoundException e) {
-			model.addAttribute("errorMessage", "존재하지 않는 post입니다.");
-			model.addAttribute("itemFormDto", new PostFormDto());
-			return "post/postForm";
-		}
-		
+	@GetMapping(value = "/posts/new")
+	public String postForm(Model model) {
+		model.addAttribute("postFormDto", new PostFormDto());
 		return "post/postForm";
 	}
+	//map
+	@GetMapping(value="posts/map")
+	public String postMap() {
+		return "post/campMap";
+	}
+//	//post 등록
+//	@PostMapping(value="post/new")
+//	public String postNew(@Valid PostFormDto postFormDto, BindingResult bindingResult,Model model, 
+//							@RequestParam("postImgFile") List<MultipartFile> postImgFileList){
+//		if(bindingResult.hasErrors()) {
+//			return "post/postForm";			
+//		}
+//		
+//		//첫번째 이미지 있는지 검사
+//		if(postImgFileList.get(0).isEmpty() && postFormDto.getId() == null) {
+//			model.addAttribute("errorMessage", "post 상품 이미지는 필수 입력 값 입니다.");
+//			return "post/postForm";		
+//		}
+//		
+//		try {
+//			postService.savePost(postFormDto, postImgFileList);
+//		} catch (Exception e) {
+//			model.addAttribute("errorMessage", "post 등록 중 에러가 발생했습니다.");
+//			return "post/postForm";
+//		}
+//		
+//		return "redirect:/";
+//
+//	}
 	
+	//post 수정 페이지 보기
+//	@GetMapping(value="/post/{postId}")
+//	public String postDtl(@PathVariable("postId") Long postId, Model model) {
+//		try {
+//			PostFormDto postFormdto = postService.getPostDtl(postId);
+//			model.addAttribute(postFormdto);
+//		} catch(EntityNotFoundException e) {
+//			model.addAttribute("errorMessage", "존재하지 않는 post입니다.");
+//			model.addAttribute("itemFormDto", new PostFormDto());
+//			return "post/postForm";
+//		}
+//		
+//		return "post/postForm";
+//	}
+//	
 	//psot 수정
-		@PostMapping(value = "/post/{postId}")
-		public String postUpdate(@Valid PostFormDto postFormDto, BindingResult bindingResult, 
-				Model model, @RequestParam("postImgFile") List<MultipartFile> postImgFileList) {
-			if(bindingResult.hasErrors()) {
-				return "post/postForm";
-			}
-			
-			//첫번째 이미지가 있는지 검사(첫번째 이미지는 필수 입력값이기 때문에)
-			if(postImgFileList.get(0).isEmpty() && postFormDto.getId() == null) {
-				model.addAttribute("errorMessage", "post 상품 이미지는 필수 입력 값 입니다.");
-				return "post/postForm";
-			}
-			
-			try {
-				postService.updatePost(postFormDto, postImgFileList);
-			} catch (Exception e) {
-				e.printStackTrace();
-				model.addAttribute("errorMessage", "post 수정 중 에러가 발생하였습니다.");
-				return "post/postForm";
-			}
-			
-			return "redirect:/";
-		}
+//		@PostMapping(value = "/post/{postId}")
+//		public String postUpdate(@Valid PostFormDto postFormDto, BindingResult bindingResult, 
+//				Model model, @RequestParam("postImgFile") List<MultipartFile> postImgFileList) {
+//			if(bindingResult.hasErrors()) {
+//				return "post/postForm";
+//			}
+//			
+//			//첫번째 이미지가 있는지 검사(첫번째 이미지는 필수 입력값이기 때문에)
+//			if(postImgFileList.get(0).isEmpty() && postFormDto.getId() == null) {
+//				model.addAttribute("errorMessage", "post 상품 이미지는 필수 입력 값 입니다.");
+//				return "post/postForm";
+//			}
+//			
+//			try {
+//				postService.updatePost(postFormDto, postImgFileList);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				model.addAttribute("errorMessage", "post 수정 중 에러가 발생하였습니다.");
+//				return "post/postForm";
+//			}
+//			
+//			return "redirect:/";
+//		}
+//		
+//		//상품 상세 페이지
+//		@GetMapping(value = "/post/{postId}")
+//		public String postDtl(Model model, @PathVariable("postId") Long postId) {
+//			PostFormDto postFormDto = postService.getPostDtl(postId);
+//			model.addAttribute("post", postFormDto);
+//			return "post/postDtl";
+//		}
 		
-		//상품 상세 페이지
-		@GetMapping(value = "/post/{postId}")
-		public String postDtl(Model model, @PathVariable("postId") Long postId) {
-			PostFormDto postFormDto = postService.getPostDtl(postId);
-			model.addAttribute("post", postFormDto);
-			return "post/postDtl";
-		}
-		
-		//map
-		@GetMapping(value="/map")
-		public String postMap() {
-			return "post/campMap";
-		}
+	
 //		@GetMapping(value = {"/posts", "/posts/{page}"}) //페이지 번호가 없는 경우와 있는 경우 2가지를 매핑
 //		public String itemManage(PostSearchDto postSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
 //		

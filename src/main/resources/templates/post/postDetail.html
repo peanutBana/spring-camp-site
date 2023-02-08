@@ -3,20 +3,118 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
 <head>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+   <script th:inline="javascript">
+   $(document).ready(function() {
+      calculateTotalPrice();
+      
+      $("#count").change(function(){
+         calculateTotalPrice();
+      })
+   });   
+   
+   function calculateTotalPrice(){
+         var count = $("#count").val(); //수량
+         var price = $("#price").val(); //가격
+         var totalPrice = price * count;
+         
+         $("#totalPrice").html(totalPrice + '원');
+      };
+   
+   function order(){
+       var token = $("meta[name='_csrf']").attr("content");
+       var header = $("meta[name='_csrf_header']").attr("content");
+
+       var url = "/order";
+       var paramData = {
+           itemId : $("#itemId").val(),
+           count : $("#count").val()
+       };
+
+       var param = JSON.stringify(paramData);
+
+       $.ajax({
+           url      : url,
+           type     : "POST",
+           contentType : "application/json",
+           data     : param,
+           beforeSend : function(xhr){
+               /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+               xhr.setRequestHeader(header, token);
+           },
+           dataType : "json",
+           cache   : false,
+           success  : function(result, status){
+           	//alert("orderId:" + result);
+               alert("주문이 완료 되었습니다.");
+               location.href='/';
+           },
+           error : function(jqXHR, status, error){
+           	//console.log(jqXHR.status);
+               if(jqXHR.status == '401'){
+                   alert('로그인 후 이용해주세요');
+                   location.href='/members/login';
+               } else{
+                   alert(jqXHR.responseText);
+               }
+           }
+       });
+   }
+   </script>
+</th:block>
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+   <style>
+.mgb-15 {
+   margin-bottom: 15px;
+}
+
+.mgt-30 {
+   margin-top: 30px;
+}
+
+.mgt-50 {
+   margin-top: 50px;
+}
+
+.repImgDiv {
+   margin-right: 15px;
+   height: auto;
+   width: 50%;
+}
+
+.repImg {
+   width: 100%;
+   height: 400px;
+}
+
+.wd50 {
+   height: auto;
+   width: 50%;
+}
+</style>
+</th:block>
+
 </head>
 <body>
 	<div layout:fragment="content">
+	 <input type="hidden" id="itemId" th:value="${post.id}">
 		<div class="detail-images">
 			<div class="detail-images-header">
 				<p>[경기 용인] 숲속의 아침 캠핑장 </p>
 				<button type="button" onclick="location.href='/users/login'">예약하기</button>
 			</div>
+			<!-- 이미지 영역 -->
 			<div id="carouselExample" class="carousel slide">
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
-			      <img src="https://d2yu53tvk06y2i.cloudfront.net/attachments/2e31333e79565995e4b98dd45ed8c741b5198838/store/limit/750/750/1797e2461aeeffcf3a98230aaa5b1d7090c8a47a5293cb1bc884d0e5b77e/thumbnail_image.jpg" class="d-block w-100" alt="...">
+			      <img th:src="${post.postImgDtoList[0].imgUrl}" class="d-block w-100" th:alt="${post.postTitle}">
 			    </div>
 			    <div class="carousel-item">
 			      <img src="https://d2yu53tvk06y2i.cloudfront.net/attachments/0296128e8afb660a62f8d53db0e8b58a99c6dfae/store/limit/750/750/ed750d969066ec6cc8e3f5cc3b5bd33ce461e5da8a40b9c39f0c4a8d5f75/thumbnail_image.jpg" class="d-block w-100" alt="...">

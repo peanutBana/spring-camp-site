@@ -32,7 +32,7 @@
                 $(this).siblings(".custom-file-label").html(fileName);
             });
         }
-	</script>
+	</script> 
 </th:block>
 
 <!-- 각 페이지의 CSS가 작성될 위치 -->
@@ -61,25 +61,31 @@
 					<li>
 						<label for="post-title">[제목]</label> 
 						<input type="text" id="post-title" class="post-title" th:field="*{postTitle}"/>
+						<p th:if="${#fields.hasErrors('postTitle')}" th:errors="*{postTitle}" class="fieldError">Incorrect Data</p>
 					</li>
 					<li>
-						<label for="post-author">[상세 설명]</label> 
-						<input type="text" id="post-author" class="post-author" th:field="*{postDetail}" readonly />
+						<label for="post-detail">[본문 내용]</label> 
+						<textarea id="post-detail" class="post-detail" th:field="*{postDetail}"></textarea>
+						<p th:if="${#fields.hasErrors('postDetail')}" th:errors="*{postDetail}" class="fieldError">Incorrect Data</p>
 					</li>
 				</ul>
 			</div>
 			<div class="img-input">
 				<p>이미지 첨부</p>
-				<div class="mb-3">
-					<label for="formFileSm" class="form-label">Small file input example</label>
-					<input class="form-control form-control-sm" id="formFileSm" type="file" multiple>
+				<div th:if="${#lists.isEmpty(postFormDto.postImgDtoList)}">
+				<div th:each="num: ${#numbers.sequence(1,5)}">
+					<div class="mb-3">
+  						<label for="formFile" class="form-label custom-file-label" th:text="이미지 + ${num}"></label>
+  						<input class="form-control custom-file-input" type="file" id="postImgFile" name="postImgFile">
+					</div>
 				</div>
 			</div>
-			<div class="text-input">
-				<p>본문 내용</p>
-				<textarea></textarea>
 			</div>
-			<button type="submit" class="write-submit">등록</button>
+
+			<div th:if="${#strings.isEmpty(postFormDto.id)}">
+				<button th:formaction="@{/post/new}" type="submit" class="btn btn-primary mb-3">저장</button>
+			</div>
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 		</form>
 	</div>
 </body>
