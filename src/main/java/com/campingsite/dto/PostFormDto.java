@@ -17,13 +17,13 @@ import lombok.Setter;
 @Setter
 public class PostFormDto {
 	private Long id;
-
-	private int userId;
 	
-	@NotBlank(message = "캠핑장 이름은 필수 입력 값입니다.")
+	@NotBlank(message = "post 제목은 필수 입력 값입니다.")
 	private String postTitle;
 	
-	@NotBlank(message = "캠핑장 설명은 필수 입력 값입니다.")	
+	private int campId;
+	
+	@NotBlank(message = "상세 설명은 필수 입력 값입니다.")	
 	private String postDetail;
 	
 	private List<PostImgDto> postImgDtoList = new ArrayList<>();

@@ -18,7 +18,7 @@ public class CampImgDto {
 	
 	private String imgUrl;		
 	
-	private String repimgYn;
+	private String repImgYn;
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

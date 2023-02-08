@@ -31,12 +31,7 @@ public class PostController {
 //	private final PostService postService;
 	
 	//게시글 리스트 화면	
-	@GetMapping(value="/posts/list")
-	public String postList(){
-		return "post/postList";
-	}
-	
-	@GetMapping(value="posts/list2")
+	@GetMapping(value="/posts/list2")
 	public String postList2(){
 		return "post/postList2";
 	}
@@ -47,7 +42,7 @@ public class PostController {
 		return "post/postForm";
 	}
 	//map
-	@GetMapping(value="posts/map")
+	@GetMapping(value="/posts/map")
 	public String postMap() {
 		return "post/campMap";
 	}

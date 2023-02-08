@@ -23,7 +23,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Post {
+public class Post extends BaseEntity{
 	@Id
 	@Column(name="post_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -51,8 +51,7 @@ public class Post {
 	public void updatePost(PostFormDto postFormDto) {
 		this.postTitle = postFormDto.getPostTitle();
 		this.postDetail = postFormDto.getPostDetail();
-		this.userId = postFormDto.getUserId();
-		this.Id = postFormDto.getId();		
+			
 	}
 	
 	

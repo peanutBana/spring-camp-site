@@ -74,29 +74,39 @@
 					</li>
 					<li>
 						<label for="post-title">[캠핑장명]</label> 
-						<input type="text" id="camp-name" th:field="*{campName}" class="form-select" />
+						<input type="text" id="camp-name" th:field="*{campName}" class="" />
 						<p th:if="${#fields.hasErrors('campName')}" th:errors="*{campName}" class="fieldError">Incorrect Data</p>
 					</li>
 					<li>
 						<label for="post-title">[남은 사이트 수]</label> 
-						<input type="text" id="empty-site-num" th:field="*{emptySiteNum}" class="form-select" />
+						<input type="text" id="empty-site-num" th:field="*{emptySiteNum}" class="" />
 						<p th:if="${#fields.hasErrors('emptySiteNum')}" th:errors="*{emptySiteNum}" class="fieldError">Incorrect Data</p>
 					</li>
 					<li>
 						<label for="post-title">[주소]</label> 
-						<input type="text" id="camp-address" th:field="*{campAddress}" class="form-select" />
+						<input type="text" id="camp-address" th:field="*{campAddress}" class="" />
 						<p th:if="${#fields.hasErrors('campAddress')}" th:errors="*{campAddress}" class="fieldError">Incorrect Data</p>
 					</li>
 					<li>
 						<label for="post-title">[연락처]</label> 
-						<input type="text" id="camp-tel" th:field="*{campTel}" class="form-select" />
+						<input type="text" id="camp-tel" th:field="*{campTel}" class="" />
 					</li>
 					<li>
 						<label for="post-title">[소개글]</label> 
-						<textarea class="form-select" id="camp-introduction" th:field="*{introduciton}"></textarea>
+						<textarea class="" id="camp-introduction" th:field="*{introduciton}"></textarea>
 						<p th:if="${#fields.hasErrors('introduciton')}" th:errors="*{introduciton}" class="fieldError">Incorrect Data</p>						
 					</li>
 				</ul>
+			</div>
+			
+			<!-- 등록할때 -->
+			<div th:if="${#lists.isEmpty(campFormDto.campImgDtoList)}">
+				<div th:each="num: ${#numbers.sequence(1,5)}">
+					<div class="mb-3">
+  						<label for="formFile" class="form-label custom-file-label" th:text="상품이미지 + ${num}"></label>
+  						<input class="form-control custom-file-input" type="file" id="campImgFile" name="campImgFile">
+					</div>
+				</div>
 			</div>
 			<!-- 수정 -->
 			<div th:if="${not #lists.isEmpty(campFormDto.campImgDtoList)}">

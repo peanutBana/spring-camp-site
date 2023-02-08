@@ -11,12 +11,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	<div layout:fragment="content">
 		
 		<div class="search">
-			<form action="/posts/search" method="get" class="search_frm">
+			<form action="/posts/search" method="post" class="search_frm">
 				<input type="text" placeholder="검색어를 입력해주세요.">
 				<button type="submit">검색</button>
 			</form>
 			<div class="make-post" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-				<button type="button" onclick="location.href='/admin/camp/new'">글쓰기</button>
+				<button type="button" onclick="location.href='/camps/new'">글쓰기</button>
 			</div>
 		</div>
 		<div class="post-cards">
