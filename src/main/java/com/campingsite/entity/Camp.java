@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import com.campingsite.constant.CampType;
 import com.campingsite.constant.ResvStatus;
 import com.campingsite.dto.CampFormDto;
-import com.campingsite.exception.OutOfStockException;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +23,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Camp {
+public class Camp extends BaseEntity{
 	@Id
 	@Column(name="camp_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -16,13 +16,16 @@ public class MainCampDto {
 	
 	private String campAddress;
 	
+	private String imgUrl;
+	
 	private String campTel;
 
 	@QueryProjection
-	public MainCampDto(Long id, String campName, Integer emptySiteNum, String campAddress, String campTel) {
+	public MainCampDto(Long id, String campName, Integer emptySiteNum, String imgUrl, String campAddress, String campTel) {
 		this.id = id;
 		this.campName = campName;
 		this.emptySiteNum = emptySiteNum;
+		this.imgUrl = imgUrl;
 		this.campAddress = campAddress;
 		this.campTel = campTel; 
 	}
