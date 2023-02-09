@@ -43,7 +43,7 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 		return QCamp.camp.regTime.after(dateTime); //이후의 시간
 	}
 	
-	private BooleanExpression searchSellStatusEq(ResvStatus searchResvStatus) {
+	private BooleanExpression searchResvStatusEq(ResvStatus searchResvStatus) {
 		return searchResvStatus == null ? null : QCamp.camp.resvStatus.eq(searchResvStatus);
 	}
 	
@@ -63,7 +63,7 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 		List<Camp> content = queryFactory
 				.selectFrom(QCamp.camp) //select * from item
 				.where(regDtsAfter(campSearchDto.getSearchDateType()), // where reg_time = ?
-					   searchSellStatusEq(campSearchDto.getSearchResvStatus()), //and sell_status = ?
+						searchResvStatusEq(campSearchDto.getSearchResvStatus()), //and sell_status = ?
 					   searchByLike(campSearchDto.getSearchBy(), campSearchDto.getSearchQuery())) // and itemNm LIKE %검색어%
 				.orderBy(QCamp.camp.id.desc())
 				.offset(pageable.getOffset()) //데이터를 가져올 시작 index
@@ -72,7 +72,7 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 		
 		long total = queryFactory.select(Wildcard.count).from(QCamp.camp)
                 .where(regDtsAfter(campSearchDto.getSearchDateType()),
-                        searchSellStatusEq(campSearchDto.getSearchResvStatus()),
+                		searchResvStatusEq(campSearchDto.getSearchResvStatus()),
                         searchByLike(campSearchDto.getSearchBy(), campSearchDto.getSearchQuery()))
                 .fetchOne();
 		

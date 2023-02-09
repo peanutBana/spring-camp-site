@@ -56,7 +56,7 @@ public class CampImgService {
 			//수정된 이미지 파일 업로드
 			String oriImgName = campImgFile.getOriginalFilename(); 
 			String imgName = fileService.uploadFile(campImgLocation, oriImgName, campImgFile.getBytes());
-			String imgUrl = "/images/item/" + imgName;
+			String imgUrl = "/images/camp/" + imgName;
 			
 			//★ savedItemImg는 현재 영속상태이므로 데이터를 변경하는 것만으로 변경감지 기능이 동작하여 트랜잭션이 끝날때 update쿼리가 실행된다.
 			//-> 엔티티가 반드시 영속상태여야 한다.
