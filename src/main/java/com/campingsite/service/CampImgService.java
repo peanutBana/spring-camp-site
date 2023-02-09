@@ -34,7 +34,7 @@ public class CampImgService {
 		//파일 업로
 		if(!StringUtils.isEmpty(oriImgName)) {
 			imgName = fileService.uploadFile(campImgLocation, oriImgName, campImgFile.getBytes());
-			imgUrl = "/images/camp_img" + imgName;
+			imgUrl = "/images/camp/" + imgName;
 		}
 		
 		campImg.updateCampImg(oriImgName, imgName, imgUrl);
@@ -52,7 +52,6 @@ public class CampImgService {
 				// C:/shop/item/a110f979-1467-4c7e-8346-52373e55018d.jpg
 				fileService.deleteFile(campImgLocation + "/" + savedCampImg.getImgName());
 			}
-			
 			//수정된 이미지 파일 업로드
 			String oriImgName = campImgFile.getOriginalFilename(); 
 			String imgName = fileService.uploadFile(campImgLocation, oriImgName, campImgFile.getBytes());

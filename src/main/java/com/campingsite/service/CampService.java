@@ -90,16 +90,16 @@ public class CampService {
 		}
 		return camp.getId();
 	}
-//
-//	//상품 리스트 가져오기
-//		@Transactional(readOnly = true)
-//		public Page<Camp> getAdminCampPage(CampSearchDto campSearchDto, Pageable pageable) {
-//			return campRepository.getAdminCampPage(campSearchDto, pageable);
-//		}
-//		
-//		//메인화면 아이템 가져오기
-//		@Transactional(readOnly = true)
-//		public Page<MainCampDto> getMainItemPage(CampSearchDto campSearchDto, Pageable pageable) {
-//			return campRepository.getMainCampPage(campSearchDto, pageable);
-//		}
+
+	//상품 리스트 가져오기
+		@Transactional(readOnly = true)
+		public Page<Camp> getAdminCampPage(CampSearchDto campSearchDto, Pageable pageable) {
+			return campRepository.getAdminCampPage(campSearchDto, pageable);
+		}
+		
+		//메인화면 아이템 가져오기
+		@Transactional(readOnly = true)
+		public Page<MainCampDto> getMainCampPage(CampFormDto campFormDto, Pageable pageable) {
+			return campRepository.getMainCampPage(campFormDto, pageable);
+		}
 }

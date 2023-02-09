@@ -17,76 +17,64 @@
 </head>
 <body>
 	 <div layout:fragment="content">
-	 <div class="content-items">
-	   <div class="carousel">
-	   		<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-			  <div class="carousel-inner">
-			    <div class="carousel-item active">
-			      <img src="https://p4.wallpaperbetter.com/wallpaper/732/641/312/nature-sunset-landscape-camping-wallpaper-preview.jpg" class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="https://p4.wallpaperbetter.com/wallpaper/616/958/383/stars-trees-camping-camp-fire-camp-night-hd-wallpaper-preview.jpg" class="d-block w-100" alt="...">
-			    </div>
-			  </div>
-			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Previous</span>
-			  </button>
-			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="visually-hidden">Next</span>
-			  </button>
+		 <div class="content-items">
+		   <div class="carousel">
+		   		<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				      <img src="https://p4.wallpaperbetter.com/wallpaper/732/641/312/nature-sunset-landscape-camping-wallpaper-preview.jpg" class="d-block w-100" alt="...">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="https://p4.wallpaperbetter.com/wallpaper/616/958/383/stars-trees-camping-camp-fire-camp-night-hd-wallpaper-preview.jpg" class="d-block w-100" alt="...">
+				    </div>
+				  </div>
+				  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Previous</span>
+				  </button>
+				  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Next</span>
+				  </button>
+				</div>
+		   </div>
+		   <div class="mid">
+				<div class="site-info">
+					<p>사이트 정보</p>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>					
+					</ul>
+				</div>
+				<div class="v-line"></div>
+				<div class="exhibition">
+					<p>기획전</p>
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>					
+					</ul>
+				</div>
 			</div>
-	   </div>
-	   <div class="mid">
-			<div class="site-info">
-				<p>사이트 정보</p>
-				<ul>
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>					
-				</ul>
-			</div>
-			<div class="v-line"></div>
-			<div class="exhibition">
-				<p>기획전</p>
-				<ul>
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>					
-				</ul>
-			</div>
-		</div>
-		<div class="admin-sgt">
+			<div class="admin-sgt">
 			<p>추천 사이트</p>
-			<div class="card-section">
-				<div class="card" style="width: 18rem;">
-					<a href="#">
-					  <img src="https://p4.wallpaperbetter.com/wallpaper/445/193/170/5bd028967a541-wallpaper-preview.jpg" class="card-img-top" alt="...">
-					</a>
-				  <div class="card-body">
-				  	<p class="card-text"><a href="#">content</a></p>
-				  </div>
-				</div>
-				<div class="card" style="width: 18rem;">
-					<a href="#">
-					  <img src="https://p4.wallpaperbetter.com/wallpaper/445/193/170/5bd028967a541-wallpaper-preview.jpg" class="card-img-top" alt="...">
-					</a>
-				  <div class="card-body">
-				  	<p class="card-text"><a href="#">content</a></p>
-				  </div>
-				</div>
-				<div class="card" style="width: 18rem;">
-					<a href="#">
-					  <img src="https://p4.wallpaperbetter.com/wallpaper/445/193/170/5bd028967a541-wallpaper-preview.jpg" class="card-img-top" alt="...">
-					</a>
-				  <div class="card-body">
-				  	<p class="card-text"><a href="#">content</a></p>
-				  </div>
+				<div class="admin-card">
+					<th:block  th:each="camp, status: ${camps.getContent()}">	
+						<div class="card" style="width: 18rem;">
+							<a th:href="'/camps/' +${camp.id}">
+							  <img th:src="${camp.campAddress}" th:alt="${camp.campName}">
+							</a>
+						  <div class="card-body">
+					  		<h5 class="card-title">[[${camp.campName}]]</h5>
+							<h4 class="card-text">[[${camp.imgUrl}]]</h4>
+							<h3 class="card-text">[[${camp.campTel}]]</h3>
+						  </div>
+						</div>
+					</th:block>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 </body>

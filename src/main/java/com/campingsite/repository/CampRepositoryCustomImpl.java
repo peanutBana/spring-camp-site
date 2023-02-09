@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
+import com.campingsite.dto.CampFormDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
 import com.campingsite.dto.QMainCampDto;
@@ -83,25 +84,23 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 		return StringUtils.isEmpty(searchQuery) ? null : QCamp.camp.campName.like("%" + searchQuery + "%");
 	}
 
-
 	@Override
-	public Page<MainCampDto> getMainCampPage(CampSearchDto campSearchDto, Pageable pageable) {
-		QCamp camp = QCamp.camp;
+	public Page<MainCampDto> getMainCampPage(CampFormDto campFromDto, Pageable pageable) {
+		QCamp camp= QCamp.camp;
 		QCampImg campImg = QCampImg.campImg;
 		
 		List<MainCampDto> content = queryFactory.select(
 					new QMainCampDto(
-							camp.id, 
-							camp.campName, 
-							camp.emptySiteNum, 
-							campImg.imgUrl, 
-							camp.campTel,
-							camp.campAddress
+							camp.id,
+							camp.campName,
+							camp.emptySiteNum,
+							camp.campAddress,
+							campImg.imgUrl,
+							camp.campTel
 							)
 					).from(campImg)
 				     .join(campImg.camp, camp)
 				     .where(campImg.repImgYn.eq("Y"))
-				     .where(campNmLike(campSearchDto.getSearchQuery()))
 				     .orderBy(camp.id.desc())
 				     .offset(pageable.getOffset())
 					 .limit(pageable.getPageSize())
@@ -111,11 +110,13 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 		Long total = queryFactory.select(Wildcard.count)
 					 .from(campImg)
 				     .join(campImg.camp, camp)
-				     .where(campImg.repImgYn.eq("Y"))
-				     .where(campNmLike(campSearchDto.getSearchQuery()))
+				     .where(campImg.repImgYn.eq("Y"))				  
 				     .fetchOne();
 		
 		return new PageImpl<>(content, pageable, total);
 	}
+
+
+	
 
 }

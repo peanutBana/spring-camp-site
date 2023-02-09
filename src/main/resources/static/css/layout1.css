@@ -1,4 +1,4 @@
-html {
+/* html { */
 	position: relative;
 	min-height: 100%;
 	marginL: 0;
@@ -116,21 +116,21 @@ ul li {
 	width: 2%;
 }
 
-.admin-sgt {
-	margin-bottom: 150px;
+.admin-card{
+	display:flex;
+	flex-wrap: wrap;
 }
 
-.card-section {
-	display: flex;
+.card{
+	width:30%;
+	height: 400px;
+	margin: 10px;
 }
 
-.card {
-	width: 30%;
-	margin: 5px;
-}
 
 .card img {
 	transition: 0.3s;
+	
 }
 
 .card a:hover img {
