@@ -39,15 +39,29 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 			</th:block>
 		</div>
 		<div class="paging">
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination">
-			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-			  </ul>
-			</nav>
+			<nav
+			th:with="start=${(camps.number/maxPage)*maxPage + 1}
+			,end=(${(camps.totalPages == 0) ? 1 : (start + (maxPage - 1) < camps.totalPages ? start + (maxPage - 1) : camps.totalPages)})"
+			aria-label="Page navigation example">
+			<ul class="pagination d-flex justify-content-center">
+				<li class="page-item" th:classappend="${camps.first}?'disabled'">
+					<a th:href="@{'/camps/list' + '?searchQuery=' + ${campSearchDto.searchQuery} + '&page=' + ${camps.number-1}}" class="page-link">
+						<span>이전</span>
+					</a>
+				</li>
+				<li class="page-item"
+					th:each="page: ${#numbers.sequence(start, end)}"
+					th:classappend="${camps.number eq page-1}?'active':''">
+					<a class="page-link" th:inline="text"
+					th:href="@{'/camps/list' +'?searchQuery=' + ${campSearchDto.searchQuery} + '&page=' + ${page-1}}">[[${page}]]</a>
+				</li>
+				<li class="page-item" th:classappend="${camps.last}?'disabled'">
+					<a class="page-link"
+					th:href="@{'/camps/list' +'?searchQuery=' + ${campSearchDto.searchQuery} + '&page=' + ${camps.number+1}}">다음</a>
+				</li>
+			</ul>
+		</nav>
+			
 		</div>
 	</div>
 </body>
