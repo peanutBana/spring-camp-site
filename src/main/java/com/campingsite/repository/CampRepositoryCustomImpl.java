@@ -11,14 +11,16 @@ import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
 import com.campingsite.dto.CampFormDto;
+import com.campingsite.dto.CampListDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
+import com.campingsite.dto.QCampListDto;
 import com.campingsite.dto.QMainCampDto;
 import com.campingsite.entity.Camp;
 import com.campingsite.entity.CampImg;
-import com.campingsite.constant.ResvStatus;
 import com.campingsite.entity.QCamp;
 import com.campingsite.entity.QCampImg;
+import com.campingsite.constant.ResvStatus;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -94,8 +96,8 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 							camp.id,
 							camp.campName,
 							camp.emptySiteNum,
-							camp.campAddress,
 							campImg.imgUrl,
+							camp.campAddress,
 							camp.campTel
 							)
 					).from(campImg)
@@ -116,7 +118,39 @@ public class CampRepositoryCustomImpl implements CampRepositoryCustom{
 		return new PageImpl<>(content, pageable, total);
 	}
 
-
+	@Override
+	public Page<CampListDto> getCampListPage(CampSearchDto campSearchDto, Pageable pageable) {
+		QCamp camp= QCamp.camp;
+		QCampImg campImg = QCampImg.campImg;
+		
+		List<CampListDto> content = queryFactory.select(
+					new QCampListDto(
+							camp.id,
+							camp.campName,
+							camp.emptySiteNum,
+							camp.campTel,
+							camp.introduciton,
+							campImg.imgUrl,
+							camp.campType,
+							camp.resvStatus
+							)
+					).from(campImg)
+				     .join(campImg.camp, camp)
+				     .where(campImg.repImgYn.eq("Y"))
+				     .where(campNmLike(campSearchDto.getSearchQuery()))
+				     .orderBy(camp.id.desc())
+				     .offset(pageable.getOffset())
+					 .limit(pageable.getPageSize())
+					 .fetch();
 	
+		Long total = queryFactory.select(Wildcard.count)
+					 .from(campImg)
+				     .join(campImg.camp, camp)
+				     .where(campImg.repImgYn.eq("Y"))	
+				     .where(campNmLike(campSearchDto.getSearchQuery()))
+				     .fetchOne();
+		
+		return new PageImpl<>(content, pageable, total);
+	}
 
 }

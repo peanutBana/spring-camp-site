@@ -1,10 +1,14 @@
 package com.campingsite.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.campingsite.dto.CampFormDto;
+import com.campingsite.dto.CampListDto;
+import com.campingsite.dto.CampSearchDto;
+import com.campingsite.dto.MainCampDto;
 import com.campingsite.service.CampService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,7 +35,14 @@ public class CampController {
 	private final CampService campService;
 	//추천 캠핑장 리스트
 	@GetMapping(value="/list")
-	public String campList(){
+	public String campList(CampSearchDto campSearchDto, Optional<Integer> page, Model model){
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);		//한 페이지당 가져올 아이템 개수
+		Page<CampListDto> camps = campService.getCampListPage(campSearchDto, pageable);
+		
+		model.addAttribute("camps", camps);		
+		model.addAttribute("campSearchDto", campSearchDto);
+		model.addAttribute("maxPage", 5);
+		
 		return "camp/campList";
 	}
 	

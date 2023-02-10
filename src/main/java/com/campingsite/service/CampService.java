@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.campingsite.dto.CampFormDto;
 import com.campingsite.dto.CampImgDto;
+import com.campingsite.dto.CampListDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
 import com.campingsite.dto.PostFormDto;
@@ -101,5 +102,10 @@ public class CampService {
 		@Transactional(readOnly = true)
 		public Page<MainCampDto> getMainCampPage(CampFormDto campFormDto, Pageable pageable) {
 			return campRepository.getMainCampPage(campFormDto, pageable);
+		}
+		
+		@Transactional(readOnly = true)
+		public Page<CampListDto> getCampListPage(CampSearchDto campSearchDto, Pageable pageable) {
+			return campRepository.getCampListPage(campSearchDto, pageable);
 		}
 }

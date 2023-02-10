@@ -11,8 +11,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	<div layout:fragment="content">
 		
 		<div class="search">
-			<form action="/posts/search" method="post" class="search_frm">
-				<input type="text" placeholder="검색어를 입력해주세요.">
+			<form th:action="@{/camps/list}" method="get" class="search_frm">
+				<input type="text" name="searchQuery" placeholder="검색어를 입력해주세요.">
 				<button type="submit">검색</button>
 			</form>
 			<div class="make-post" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
@@ -20,30 +20,23 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 			</div>
 		</div>
 		<div class="post-cards">
-			<div class="post-card">
-				<div class="post-card-img"><a href="/posts/list/detail"><img src="https://m.thankqcamping.com/file/2019/03/12/2019031266949.55.jpg"/></a></div>
-				<div class="post-card-body">
-					<div class="post-card-title">title</div>
-					<div class="post-card-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ligula ac odio blandit congue. Proin placerat in 	</div>
-					<div class="like-comment">♥ 3 | ▤ 2 </div>
-				</div>				
-			</div>
-			<div class="post-card">
-				<div class="post-card-img"><a href="/list/detail"><img src="https://m.thankqcamping.com/file/2019/03/12/2019031266949.55.jpg"/></a></div>
-				<div class="post-card-body">
-					<div class="post-card-title">title</div>
-					<div class="post-card-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ligula ac odio blandit congue. Proin placerat in 	</div>
-					<div class="like-comment">♥ 3 | ▤ 2 </div>
-				</div>				
-			</div>
-			<div class="post-card">
-				<div class="post-card-img"><a href="/list/detail"><img src="https://m.thankqcamping.com/file/2019/03/12/2019031266949.55.jpg"/></a></div>
-				<div class="post-card-body">
-					<div class="post-card-title">title</div>
-					<div class="post-card-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper ligula ac odio blandit congue. Proin placerat in 	</div>
-					<div class="like-comment">♥ 3 | ▤ 2 </div>
-				</div>				
-			</div>	
+			<th:block  th:each="camp, status: ${camps.getContent()}">	
+				<div class="post-card">
+					<div class="post-card-img">
+						<a th:href="'/camps/' +${camp.id}">
+						  <img th:src="@{${camp.imgUrl}}" th:alt="${camp.campName}">
+						</a>
+					</div>
+					item.number: [[${camps.number}]],
+			        maxPage: [[${maxPage}]], <!-- 5 -->
+					totalPages: [[${camps.totalPages}]],
+					<div class="post-card-body">
+						<div class="post-card-title">[[${camp.campName}]]</div>
+						<div class="post-card-content">[[${camp.emptySiteNum}]]</div>
+						<div class="like-comment">[[${camp.resvStatus}]]</div>
+					</div>				
+				</div>
+			</th:block>
 		</div>
 		<div class="paging">
 			<nav aria-label="Page navigation example">

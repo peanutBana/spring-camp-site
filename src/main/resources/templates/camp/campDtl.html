@@ -10,7 +10,7 @@
 
 <!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
-   <!-- <script th:inline="javascript">
+  <script th:inline="javascript">
    $(document).ready(function() {
       calculateTotalPrice();
       
@@ -66,7 +66,7 @@
            }
        });
    }
-   </script> -->
+   </script> 
 </th:block>
 
 <!-- 각 페이지의 CSS가 작성될 위치 -->
@@ -104,30 +104,34 @@
 
 </head>
 <body>
-   <div layout:fragment="content"
-      style="margin-left: 25%; margin-right: 25%">
+   <div layout:fragment="content">
       
       <input type="hidden" id="campId" th:value="${camp.id}">
 
-      <div class="d-flex">
-         <div class="repImgDiv">
-            <img th:src="${camp.campImgDtoList[0].imgUrl}" class="rounded repImg" th:alt="${camp.campName}">
+      <div class="detail-top">
+         <div class="repimgdiv">
+            <img th:src="${camp.campImgDtoList[0].imgUrl}" class="repimg" th:alt="${camp.campName}">
          </div>
-         <div class="wd50">
-            <span th:if="${camp.resvStatus == T(com.camping-site.constant.ResvStatus).SELL}" class="badge badge-primary mgb-15"> 예약가능 </span>
-            <span th:unless="${camp.resvStatus == T(com.camping-site.constant.ResvStatus).SELL}" class="badge btn-danger mgb-15"> 품절 </span>
-            <div class="h4" th:text="${camp.campName}"></div>
-    
-            <hr class="my-4">
-
-            <!-- 판매상태 일 때 보여주는 버튼 -->
-            <div th:if="${camp.resvSatatus == T(com.camping-site.constant.ResvStatus).SELL}" class="text-right">
-               <button type="button" class="btn btn-primary btn-lg">주문하기</button>
-            </div>
-            <!—- 품절상태 일 때 보여주는 버튼 —->
-            <div th:unless="${camp.resvSatatus == T(com.camping-site.constant.ResvStatus).SELL}" class="text-right">
-               <button type="button" class="btn btn-danger btn-lg">품절</button>
-            </div>
+         <div class="resv-status">
+	         <div class="resv-status-top">
+	            <div class="display-5 " th:text="${camp.campName}"></div>
+	            <div class="h4" th:text="${camp.campType}"></div>
+	            <div class="h4" th:text="${camp.campAddress}"></div>
+	            <div class="h4" th:text="${camp.campTel}"></div>
+	 		 </div>
+	 		 <div class="resv-status-buttom">   
+	            <span th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge badge-primary mgb-15 h5"> 예약가능 </span>
+	            <span th:unless="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge btn-danger mgb-15 h5"> 품절 </span>
+	            <hr class="">
+	            <!-- 판매상태 일 때 보여주는 버튼 -->
+	            <div th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
+	               <button type="button" class="btn btn-primary btn-lg">예약하기</button>
+	            </div>
+	            <!—- 품절상태 일 때 보여주는 버튼 —->
+	            <div th:unless="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
+	               <button type="button" class="btn btn-danger btn-lg">품절</button>
+	            </div>
+	         </div>
          </div>
       </div>
 
@@ -139,9 +143,12 @@
          </div>
       </div>
       <!—- 나머지 이미지 보여줌 —->
-      <div th:each="campImg : ${camp.campImgDtoList}" class="text-center">
-         <img th:if="${not #strings.isEmpty(campImg.imgUrl)}" th:src="${campImg.imgUrl}" class="rounded mgb-15" width="800">
-      </div>
+      		
+	
+	   <div th:each="campImg : ${camp.campImgDtoList}" class="">
+          <img th:if="${not #strings.isEmpty(campImg.imgUrl)}" th:src="${campImg.imgUrl}" class="detail-img" width="800">
+       </div> 
+	  
    </div>
 </body>
 </html>

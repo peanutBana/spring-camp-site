@@ -61,14 +61,14 @@
 			<p>추천 사이트</p>
 				<div class="admin-card">
 					<th:block  th:each="camp, status: ${camps.getContent()}">	
-						<div class="card" style="width: 18rem;">
+						<div class="card">
 							<a th:href="'/camps/' +${camp.id}">
-							  <img th:src="${camp.campAddress}" th:alt="${camp.campName}">
+							  <img th:src="@{${camp.imgUrl}}" th:alt="${camp.campName}">
 							</a>
 						  <div class="card-body">
-					  		<h5 class="card-title">[[${camp.campName}]]</h5>
-							<h4 class="card-text">[[${camp.imgUrl}]]</h4>
-							<h3 class="card-text">[[${camp.campTel}]]</h3>
+					  		<h3 class="card-title">[[${camp.campName}]]</h3>
+							<h4 class="card-text">[[${camp.campAddress}]]</h4>sk em
+							<h5 class="card-text">[[${camp.campTel}]]</h5>
 						  </div>
 						</div>
 					</th:block>

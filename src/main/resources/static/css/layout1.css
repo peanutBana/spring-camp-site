@@ -1,4 +1,4 @@
-/* html { */
+html{ 
 	position: relative;
 	min-height: 100%;
 	marginL: 0;
@@ -122,15 +122,18 @@ ul li {
 }
 
 .card{
-	width:30%;
+	width: 30%;
 	height: 400px;
 	margin: 10px;
+	overflow:hidden;
 }
 
 
 .card img {
 	transition: 0.3s;
-	
+	width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .card a:hover img {
@@ -449,6 +452,43 @@ thead th:nth-child(2) {
 .like {
 	font-size: 30px;
 	line-height: 30px;
+}
+
+/*camp detail*/
+.detail-top{
+	display: flex;
+}
+.repimgdiv{
+	width: 50%;
+	overflow:hidden;
+	margin: 0 auto;
+}
+.repimg{	
+	width:90%;
+    height:90%;
+    margin: 0 auto;
+    object-fit:cover;
+}
+
+.resv-status{
+	width: 50%;
+	margin: 10px auto;
+}
+
+.resv-status-top{
+	height: 60%;
+}
+.display-5{
+	margin-bottom: 20px;
+}
+
+.resv-status-buttom{
+	height: 40%;
+	
+}
+
+.detail-imgs{
+	background-size: 50%;
 }
 
 /*map section*/
