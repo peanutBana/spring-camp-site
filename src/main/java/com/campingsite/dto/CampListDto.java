@@ -14,7 +14,7 @@ public class CampListDto {
 	private String campName;
 	private int emptySiteNum;
 	private String campTel;
-	private String introduciton;
+	private String introduction;
 	private String imgUrl;
 	private CampType campType;
 	private ResvStatus resvStatus;
@@ -22,12 +22,12 @@ public class CampListDto {
 	
 	@QueryProjection
 	public CampListDto(Long id, String campName, int emptySiteNum, String campTel, 
-				String introduciton, String imgUrl, CampType campType, ResvStatus resvStatus) {
+				String introduction, String imgUrl, CampType campType, ResvStatus resvStatus) {
 		this.id = id;
 		this.campName = campName;
 		this.emptySiteNum = emptySiteNum;
 		this.campTel = campTel;
-		this.introduciton = introduciton;
+		this.introduction = introduction;
 		this.imgUrl = imgUrl;
 		this.campType = campType;
 		this.resvStatus = resvStatus;

@@ -27,12 +27,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 						  <img th:src="@{${camp.imgUrl}}" th:alt="${camp.campName}">
 						</a>
 					</div>
-					item.number: [[${camps.number}]],
-			        maxPage: [[${maxPage}]], <!-- 5 -->
-					totalPages: [[${camps.totalPages}]],
 					<div class="post-card-body">
 						<div class="post-card-title">[[${camp.campName}]]</div>
-						<div class="post-card-content">[[${camp.emptySiteNum}]]</div>
+						<div class="post-card-content">[[${camp.introduction}]]</div>
 						<div class="like-comment">[[${camp.resvStatus}]]</div>
 					</div>				
 				</div>

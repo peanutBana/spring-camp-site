@@ -11,7 +11,7 @@
 <!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
   <script th:inline="javascript">
-   $(document).ready(function() {
+  $(document).ready(function() {
       calculateTotalPrice();
       
       $("#count").change(function(){
@@ -26,14 +26,14 @@
          
          $("#totalPrice").html(totalPrice + '원');
       };
-   
-   function order(){
+  
+   function reserve(){	   
        var token = $("meta[name='_csrf']").attr("content");
        var header = $("meta[name='_csrf_header']").attr("content");
 
-       var url = "/order";
+       var url = "/reserve";
        var paramData = {
-           itemId : $("#itemId").val(),
+           campId : $("#campId").val(),
            count : $("#count").val()
        };
 
@@ -59,7 +59,7 @@
            	//console.log(jqXHR.status);
                if(jqXHR.status == '401'){
                    alert('로그인 후 이용해주세요');
-                   location.href='/members/login';
+                   location.href='/users/login';
                } else{
                    alert(jqXHR.responseText);
                }
@@ -125,7 +125,7 @@
 	            <hr class="">
 	            <!-- 판매상태 일 때 보여주는 버튼 -->
 	            <div th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
-	               <button type="button" class="btn btn-primary btn-lg">예약하기</button>
+	               <button type="button" class="btn btn-primary btn-lg" onclick="reserve()">예약하기</button>
 	            </div>
 	            <!—- 품절상태 일 때 보여주는 버튼 —->
 	            <div th:unless="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
@@ -138,6 +138,7 @@
       <div class="jumbotron jumbotron-fluid mgt-30">
          <div class="container">
             <h4 class="display-5">상세 설명</h4>
+            <button th:onclick="'location.href=\'update/'+ @{${camp.id}} + '\''">수정하기</button>
             <hr class="my-4">
             <p class="lead" th:text="${camp.introduciton}"></p>
          </div>

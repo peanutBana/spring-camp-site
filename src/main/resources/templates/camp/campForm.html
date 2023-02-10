@@ -125,7 +125,7 @@
 			</div> 
 			
 			<div th:unless="${#strings.isEmpty(campFormDto.id)}" class="camp_frm_btn">
-				<button th:formaction="@{'/camps/' + ${campFormDto.id} }" type="submit" >수정</button>
+				<button th:formaction="@{'/camps/update/' + ${campFormDto.id} }" type="submit" >수정</button>
 			</div>
 			
 			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">

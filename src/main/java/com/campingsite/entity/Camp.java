@@ -39,6 +39,9 @@ public class Camp extends BaseEntity{
 	@Column(nullable=false)
 	private String campTel;
 	
+	@Column(nullable=false, name="price")
+	private int price;
+	
 	@Lob
 	@Column(nullable=false)
 	private String introduciton;
