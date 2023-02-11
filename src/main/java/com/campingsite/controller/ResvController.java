@@ -16,38 +16,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.campingsite.dto.ResvDto;
+import com.campingsite.service.ResvService;
 
 import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class ResvController {
 	
-//	private final ResvService resvService;
-//	
-//	@PostMapping(value="/reserve")		//principal => 로그인한 사용자의 정보가 담겨있음  ResponseEntity
-//	public @ResponseBody ResponseEntity reserve(@RequestBody @Valid ResvDto resvDto, BindingResult bindingResult, Principal principal ) {
-//		if(bindingResult.hasErrors()) {
-//			StringBuilder sb = new StringBuilder();
-//			List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-//			
-//			for(FieldError fieldError : fieldErrors) {
-//				sb.append(fieldError.getDefaultMessage());
-//			}
-//			return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
-//		}
-//		
-//		String email = principal.getName();		//사용자 email 가져옴
-//		Long resvId;
-//		
-//	
-//		try {
-//			resvId = resvService.reserve(resvDto, email);
-//		}catch (Exception e){
-//			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-//
-//		}	
-//		return new ResponseEntity<Long>(resvId, HttpStatus.OK);
-//	}
+	private final ResvService resvService;
+	
+	@PostMapping(value="/reserve")		//principal => 로그인한 사용자의 정보가 담겨있음  ResponseEntity
+	public @ResponseBody ResponseEntity reserve(@RequestBody @Valid ResvDto resvDto, BindingResult bindingResult, Principal principal ) {
+		if(bindingResult.hasErrors()) {
+			StringBuilder sb = new StringBuilder();
+			List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+			
+			for(FieldError fieldError : fieldErrors) {
+				sb.append(fieldError.getDefaultMessage());
+			}
+			return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
+		}
+		
+		String email = principal.getName();		//사용자 email 가져옴
+		Long resvId;
+		
+	
+		try {
+			resvId = resvService.reserve(resvDto, email);
+		}catch (Exception e){
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
+		}	
+		return new ResponseEntity<Long>(resvId, HttpStatus.OK);
+	}
 	
 	@GetMapping(value="/reserve")
 	public String makeReservation() {

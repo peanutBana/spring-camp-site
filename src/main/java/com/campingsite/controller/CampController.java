@@ -1,5 +1,6 @@
 package com.campingsite.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,15 +10,19 @@ import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.campingsite.dto.CampFormDto;
@@ -76,7 +81,7 @@ public class CampController {
 
 
 		//camp 수정 페이지 보기
-		@GetMapping(value = "update/{campId}")
+		@GetMapping(value = "/update/{campId}")
 		public String campDtl(@PathVariable("campId") Long campId, Model model) {
 			try {
 				CampFormDto campFormdto = campService.getCampDtl(campId);
@@ -90,7 +95,7 @@ public class CampController {
 		}
 	
 		//camp 수정
-		@PostMapping(value = "update/{campId}")
+		@PostMapping(value = "/update/{campId}")
 			public String camoUpdate(@Valid CampFormDto campFormDto, BindingResult bindingResult, 
 				Model model, @RequestParam("campImgFile") List<MultipartFile> campImgFileList) {
 			if(bindingResult.hasErrors()) {
@@ -121,4 +126,17 @@ public class CampController {
 			model.addAttribute("camp", campFormDto);
 			return "camp/campDtl";
 		}
+		
+//		@DeleteMapping(value = "delete/{campId}")
+//		public @ResponseBody ResponseEntity deleteCamp(@PathVariable("campId")Long campId) {
+//			 campService.deleteCamp(campId);
+//			 return new ResponseEntity<Long>(campId, HttpStatus.OK);
+//		 }
+//		
+//		 
+//		@DeleteMapping(value = "/{campId}/delete")
+//		public String deleteCamp(@PathVariable("campId")Long campId) {
+//			 campService.deleteCamp(campId);
+//			 return "camp/campDtl";
+//		 }
 }

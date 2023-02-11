@@ -120,8 +120,8 @@
 	            <div class="h4" th:text="${camp.campTel}"></div>
 	 		 </div>
 	 		 <div class="resv-status-buttom">   
-	            <span th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge badge-primary mgb-15 h5"> 예약가능 </span>
-	            <span th:unless="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge btn-danger mgb-15 h5"> 품절 </span>
+	            <span th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge badge-primary mgb-15 h5">예약가능</span>
+	            <span th:unless="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge btn-danger mgb-15 h5">품절</span>
 	            <hr class="">
 	            <!-- 판매상태 일 때 보여주는 버튼 -->
 	            <div th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
@@ -138,8 +138,10 @@
       <div class="jumbotron jumbotron-fluid mgt-30">
          <div class="container">
             <h4 class="display-5">상세 설명</h4>
-            <button th:onclick="'location.href=\'update/'+ @{${camp.id}} + '\''">수정하기</button>
+           	<button th:onclick="'location.href=\'update/'+ @{${camp.id}} + '\''">수정하기</button>
+           	<button th:onclick="'location.href=\''+ @{${camp.id}} + '/delete'+'\''">삭제하기</button>
             <hr class="my-4">
+            
             <p class="lead" th:text="${camp.introduciton}"></p>
          </div>
       </div>

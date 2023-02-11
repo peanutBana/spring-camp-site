@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.StringUtils;
 
 import com.campingsite.dto.CampFormDto;
 import com.campingsite.dto.CampImgDto;
@@ -20,8 +21,10 @@ import com.campingsite.dto.PostFormDto;
 import com.campingsite.entity.Camp;
 import com.campingsite.entity.CampImg;
 import com.campingsite.entity.Post;
+import com.campingsite.entity.User;
 import com.campingsite.repository.CampImgRepository;
 import com.campingsite.repository.CampRepository;
+import com.campingsite.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,6 +34,7 @@ import lombok.RequiredArgsConstructor;
 public class CampService {
 	private final CampRepository campRepository;
 	private final CampImgService campImgService;
+	private final UserRepository userRepository;
 	private final CampImgRepository campImgRepository;
 
 	//상품 등록
@@ -91,6 +95,13 @@ public class CampService {
 		}
 		return camp.getId();
 	}
+	
+	//삭제
+	public void deleteCamp(Long campId) {
+		Camp camp = campRepository.findById(campId).orElseThrow(EntityNotFoundException::new);
+		campRepository.delete(camp);
+	}
+	
 
 	//상품 리스트 가져오기
 		@Transactional(readOnly = true)
