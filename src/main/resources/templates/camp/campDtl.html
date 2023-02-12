@@ -118,6 +118,7 @@
 	            <div class="h4" th:text="${camp.campType}"></div>
 	            <div class="h4" th:text="${camp.campAddress}"></div>
 	            <div class="h4" th:text="${camp.campTel}"></div>
+	            <div class="h4" th:text="${camp.price}"></div>
 	 		 </div>
 	 		 <div class="resv-status-buttom">   
 	            <span th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="badge badge-primary mgb-15 h5">예약가능</span>

@@ -15,8 +15,6 @@
         	
         	bindDomEvent();
     	});
-		
-		
 		//파일 첨부시 이미지 파일인지 검사를 한다.
         function bindDomEvent(){
             $(".custom-file-input").on("change", function() {
@@ -95,6 +93,11 @@
 						<label for="post-title">[소개글]</label> 
 						<textarea class="" id="camp-introduction" th:field="*{introduciton}"></textarea>
 						<p th:if="${#fields.hasErrors('introduciton')}" th:errors="*{introduciton}" class="fieldError">Incorrect Data</p>						
+					</li>
+					<li>
+						<label for="post-title">[가격]</label> 
+						<input class="" id="camp-price" th:field="*{price}"></input>
+						<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError">Incorrect Data</p>						
 					</li>
 				</ul>
 			</div>
