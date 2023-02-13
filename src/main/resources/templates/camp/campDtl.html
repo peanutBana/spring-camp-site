@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-   layout:decorate="~{layouts/layout1}">
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
 <head>
 <meta name="_csrf" th:content="${_csrf.token}"/>
 <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
@@ -66,7 +67,7 @@
            }
        });
    }
-   </script> 
+   </script>
 </th:block>
 
 <!-- 각 페이지의 CSS가 작성될 위치 -->
@@ -126,7 +127,7 @@
 	            <hr class="">
 	            <!-- 판매상태 일 때 보여주는 버튼 -->
 	            <div th:if="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
-	               <button type="button" class="btn btn-primary btn-lg" onclick="reserve()">예약하기</button>
+	               <button type="button" class="btn btn-primary btn-lg" th:onclick="'location.href=\''+'reserve/'+ @{${camp.id}} + '\''">예약하기</button>
 	            </div>
 	            <!—- 품절상태 일 때 보여주는 버튼 —->
 	            <div th:unless="${camp.resvStatus == T(com.campingsite.constant.ResvStatus).SELL}" class="text-right">
@@ -139,8 +140,11 @@
       <div class="jumbotron jumbotron-fluid mgt-30">
          <div class="container">
             <h4 class="display-5">상세 설명</h4>
-           	<button th:onclick="'location.href=\'update/'+ @{${camp.id}} + '\''">수정하기</button>
+            <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            	<button th:onclick="'location.href=\'update/'+ @{${camp.id}} + '\''">수정하기</button>
            	<button th:onclick="'location.href=\''+ @{${camp.id}} + '/delete'+'\''">삭제하기</button>
+            </div>
+           	
             <hr class="my-4">
             
             <p class="lead" th:text="${camp.introduciton}"></p>

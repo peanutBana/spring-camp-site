@@ -80,6 +80,28 @@ public class CampService {
 		return campFormDto;
 	}
 	
+	@Transactional(readOnly = true) //트랜잭션 읽기 전용(변경감지 수행하지 않음) -> 성능향상
+	public CampFormDto getCampResv(Long campId) {
+		//1. item_img테이블의 이미지를 가져온다.
+		List<CampImg> campImgList = campImgRepository.findByCampIdOrderByIdAsc(campId);
+		List<CampImgDto> campImgDtoList = new ArrayList<>();
+		
+		for(CampImg campImg : campImgList) {
+			CampImgDto campImgDto = CampImgDto.of(campImg);
+			campImgDtoList.add(campImgDto);
+		}
+		Camp camp = campRepository.findById(campId)
+				                  .orElseThrow(EntityNotFoundException::new);
+		
+		//엔티티 객체 -> dto객체로 변환
+		CampFormDto campFormDto = CampFormDto.of(camp);
+		
+		//상품의 이미지 정보를 넣어준다.
+		campFormDto.setCampImgDtoList(campImgDtoList);
+		
+		return campFormDto;
+	}
+	
 	
 	//수정
 	public Long updateCamp(CampFormDto campFormDto,List<MultipartFile> campImgFileList) throws Exception {

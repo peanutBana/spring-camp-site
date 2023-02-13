@@ -29,6 +29,7 @@ import com.campingsite.dto.CampFormDto;
 import com.campingsite.dto.CampListDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
+import com.campingsite.dto.ResvFormDto;
 import com.campingsite.service.CampService;
 
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CampController {
 	private final CampService campService;
+	
 	//추천 캠핑장 리스트
 	@GetMapping(value="/list")
 	public String campList(CampSearchDto campSearchDto, Optional<Integer> page, Model model){
@@ -49,6 +51,15 @@ public class CampController {
 		model.addAttribute("maxPage", 5);
 		
 		return "camp/campList";
+	}
+	
+	//camp 상세 페이지
+	@GetMapping(value = "/{campId}")
+	public String campDtl(Model model, @PathVariable("campId") Long campId) {
+		CampFormDto campFormDto = campService.getCampDtl(campId);
+		model.addAttribute("camp", campFormDto);
+		System.out.println(campId);
+		return "camp/campDtl";
 	}
 	
 	//camp 등록 페이지 진입
@@ -76,10 +87,9 @@ public class CampController {
 			model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
 			return "camp/campForm";
 		}
-		return "redirect:/";
+		return "redirect:/camps/ ";
 	}
-
-
+	
 		//camp 수정 페이지 보기
 		@GetMapping(value = "/update/{campId}")
 		public String campDtl(@PathVariable("campId") Long campId, Model model) {
@@ -96,7 +106,7 @@ public class CampController {
 	
 		//camp 수정
 		@PostMapping(value = "/update/{campId}")
-			public String camoUpdate(@Valid CampFormDto campFormDto, BindingResult bindingResult, 
+		public String camoUpdate(@Valid CampFormDto campFormDto, BindingResult bindingResult, 
 				Model model, @RequestParam("campImgFile") List<MultipartFile> campImgFileList) {
 			if(bindingResult.hasErrors()) {
 				return "camp/campForm";
@@ -119,19 +129,21 @@ public class CampController {
 			return "redirect:/";
 		}
 		
-		//camp 상세 페이지
-		@GetMapping(value = "/{campId}")
-		public String campDtl(Model model, @PathVariable("campId") Long campId) {
-			CampFormDto campFormDto = campService.getCampDtl(campId);
-			model.addAttribute("camp", campFormDto);
-			return "camp/campDtl";
-		}
 		
-//		@DeleteMapping(value = "delete/{campId}")
-//		public @ResponseBody ResponseEntity deleteCamp(@PathVariable("campId")Long campId) {
-//			 campService.deleteCamp(campId);
-//			 return new ResponseEntity<Long>(campId, HttpStatus.OK);
-//		 }
+		//camp 예약 페이지
+		@GetMapping(value="/{campId}/reserve")
+		public String reserve(Model model, @PathVariable("campId") Long campId) {
+			CampFormDto campFormDto = campService.getCampDtl(campId);
+			model.addAttribute("resvFormDto", new ResvFormDto() );
+			return "reserve/reserveForm";
+		}
+
+		
+		@DeleteMapping(value = "delete/{campId}")
+		public @ResponseBody ResponseEntity deleteCamp(@PathVariable("campId")Long campId) {
+			 campService.deleteCamp(campId);
+			 return new ResponseEntity<Long>(campId, HttpStatus.OK);
+		 }
 //		
 //		 
 //		@DeleteMapping(value = "/{campId}/delete")

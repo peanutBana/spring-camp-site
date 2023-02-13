@@ -5,17 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 <body>
 	<div layout:fragment="content">
+	<input type="hidden" id="campId" th:value="${camp.id}">
 		<p>[예약하기]</p>
-		<form method="post" action="#">
+		<form method="post" action="#" th:boject="resvFormDto">
 			<div class="reservation">
 				<h2>캠핑장 정보</h2>
 				<table>
 					<tr>	
 						<th><label for="camp-name">캠핑장 이름 : </label></th>
-						<td><input type="text" id="camp-name" class="reserve-item"/></td>
+						<td><input type="text" id="camp-name" class="reserve-item" th:text="${camp.campName}"/></td>
 					</tr>
 					<tr>
 						<th><label for="site-num">사이트 번호 : </label></th>

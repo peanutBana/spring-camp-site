@@ -44,8 +44,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 				<li class="page-item" th:classappend="${camps.first}?'disabled'">
 					<a th:href="@{'/camps/list' + '?searchQuery=' + ${campSearchDto.searchQuery} + '&page=' + ${camps.number-1}}" class="page-link">
 						<span>이전</span>
-					</a>
 				</li>
+					</a>
 				<li class="page-item"
 					th:each="page: ${#numbers.sequence(start, end)}"
 					th:classappend="${camps.number eq page-1}?'active':''">
