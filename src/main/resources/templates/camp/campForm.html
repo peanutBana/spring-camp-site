@@ -32,7 +32,8 @@
         }
 	</script>
 </th:block>
-
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
@@ -53,7 +54,7 @@
 	<div layout:fragment="content">
 		<form method="post"  enctype="multipart/form-data" th:object="${campFormDto}" class="camp_frm">
  			<p>캠핑장 등록</p> 
-			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{id}"/>
 			<div class="info-input">
 				<ul>
 					<li>

@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -131,10 +132,11 @@ public class CampController {
 		
 		
 		//camp 예약 페이지
-		@GetMapping(value="/{campId}/reserve")
-		public String reserve(Model model, @PathVariable("campId") Long campId) {
-			CampFormDto campFormDto = campService.getCampDtl(campId);
-			model.addAttribute("resvFormDto", new ResvFormDto() );
+		@GetMapping(value="reserve/{campId}")
+		public String reserve(@PathVariable("campId") Long campId, Model model) {
+			CampFormDto campFormDto = campService.getCampInfo(campId);
+			model.addAttribute("resvFormDto", new ResvFormDto());
+			model.addAttribute("camp", campFormDto);
 			return "reserve/reserveForm";
 		}
 
