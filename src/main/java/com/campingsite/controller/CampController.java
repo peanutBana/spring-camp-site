@@ -32,6 +32,7 @@ import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
 import com.campingsite.dto.ResvFormDto;
 import com.campingsite.service.CampService;
+import com.campingsite.service.ResvService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -60,6 +61,29 @@ public class CampController {
 		CampFormDto campFormDto = campService.getCampDtl(campId);
 		model.addAttribute("camp", campFormDto);
 		return "camp/campDtl";
+	}
+	//camp 예약 페이지
+	@GetMapping(value="reserve/{campId}")
+	public String reserve(@PathVariable("campId") Long campId, Model model) {
+		CampFormDto campFormDto = campService.getCampInfo(campId);
+		model.addAttribute("resvFormDto", new ResvFormDto());
+		model.addAttribute("camp", campFormDto);
+		return "reserve/reserveForm";
+	}
+	
+	@PostMapping(value="reserve/{campId}")
+	public String reserve(@Valid ResvFormDto resvFormDto, BindingResult bindingResult, 
+			Model model) {
+		if(bindingResult.hasErrors()) {
+			return"reserve/reserveForm";
+		}
+		try {
+			campService.saveResv(resvFormDto);
+		} catch (Exception e) {
+			model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
+			return "reserve/reserveForm";
+		}
+		return "redirect:/";
 	}
 	
 	//camp 등록 페이지 진입
@@ -106,7 +130,7 @@ public class CampController {
 	
 		//camp 수정
 		@PostMapping(value = "update/{campId}")
-		public String camoUpdate(@Valid CampFormDto campFormDto, BindingResult bindingResult, 
+		public String campUpdate(@Valid CampFormDto campFormDto, BindingResult bindingResult, 
 				Model model, @RequestParam("campImgFile") List<MultipartFile> campImgFileList) {
 			if(bindingResult.hasErrors()) {
 				return "camp/campForm";
@@ -123,19 +147,8 @@ public class CampController {
 				model.addAttribute("errorMessage", "상품 수정 중 에러가 발생하였습니다.");
 				return "camp/campForm";
 			}
-			return "redirect:/";
+			return "redirect:/camps/list";
 		}
-		
-		
-		//camp 예약 페이지
-		@GetMapping(value="reserve/{campId}")
-		public String reserve(@PathVariable("campId") Long campId, Model model) {
-			CampFormDto campFormDto = campService.getCampInfo(campId);
-			model.addAttribute("resvFormDto", new ResvFormDto());
-			model.addAttribute("camp", campFormDto);
-			return "reserve/reserveForm";
-		}
-
 		
 		@DeleteMapping(value = "delete/{campId}")
 		public @ResponseBody ResponseEntity deleteCamp(@PathVariable("campId")Long campId) {

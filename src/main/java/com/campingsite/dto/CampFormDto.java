@@ -34,8 +34,8 @@ public class CampFormDto {
 	@NotBlank(message = "상세 설명은 필수 입력 값입니다.")
 	private String introduciton;
 	
-	@NotBlank(message = "1박 가격은 필수 입력 값입니다.")
-	private String price;
+	@NotNull(message = "1박 가격은 필수 입력 값입니다.")
+	private int price;
 	
 	private CampType campType;
 

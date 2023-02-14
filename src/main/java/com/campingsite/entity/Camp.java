@@ -59,6 +59,7 @@ public class Camp extends BaseEntity{
 		this.campName = campFormDto.getCampName();
 		this.campAddress = campFormDto.getCampAddress();	
 		this.campTel = campFormDto.getCampTel();
+		this.price = campFormDto.getPrice();
 		this.introduciton = campFormDto.getIntroduciton();
 		this.campType = campFormDto.getCampType();
 		this.emptySiteNum = campFormDto.getEmptySiteNum();

@@ -62,7 +62,7 @@
 				<div class="admin-card">
 					<th:block  th:each="camp, status: ${camps.getContent()}">	
 						<div class="card">
-							<a th:href="'/camps/' +${camp.id}">
+							<a th:href="'/camps/'+${camp.id}">
 							  <img th:src="@{${camp.imgUrl}}" th:alt="${camp.campName}">
 							</a>
 						  <div class="card-body">

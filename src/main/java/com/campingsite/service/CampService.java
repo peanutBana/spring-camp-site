@@ -18,12 +18,15 @@ import com.campingsite.dto.CampListDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
 import com.campingsite.dto.PostFormDto;
+import com.campingsite.dto.ResvFormDto;
 import com.campingsite.entity.Camp;
 import com.campingsite.entity.CampImg;
 import com.campingsite.entity.Post;
+import com.campingsite.entity.Reservation;
 import com.campingsite.entity.User;
 import com.campingsite.repository.CampImgRepository;
 import com.campingsite.repository.CampRepository;
+import com.campingsite.repository.ResvRepository;
 import com.campingsite.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -34,8 +37,8 @@ import lombok.RequiredArgsConstructor;
 public class CampService {
 	private final CampRepository campRepository;
 	private final CampImgService campImgService;
-	private final UserRepository userRepository;
 	private final CampImgRepository campImgRepository;
+	private final ResvRepository resvRepository;
 
 	//상품 등록
 	public Long saveCamp(CampFormDto campFormDto, List<MultipartFile> campImgFileList) throws Exception{
@@ -55,6 +58,13 @@ public class CampService {
 			campImgService.saveCampImg(campImg, campImgFileList.get(i));
 		}
 		return camp.getId();
+	}
+	
+	public Long saveResv(ResvFormDto resvFormDto) throws Exception{
+		Reservation reservation = resvFormDto.createResv();
+		resvRepository.save(reservation);
+		
+		return reservation.getId();
 	}
 	
 	//캠프 가져오기
@@ -117,7 +127,7 @@ public class CampService {
 	//수정
 	public Long updateCamp(CampFormDto campFormDto,List<MultipartFile> campImgFileList) throws Exception {
 		Camp camp = campRepository.findById(campFormDto.getId())
-					.orElseThrow(EntityNotFoundException::new);
+				.orElseThrow(EntityNotFoundException::new);
 		
 		camp.updateCamp(campFormDto);
 		
