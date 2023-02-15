@@ -50,9 +50,9 @@ public class CampFormDto {
 	public Camp createCamp() {
 		return modelMapper.map(this, Camp.class);
 	}
-
+											
 	public static CampFormDto of(Camp camp) {
 		return modelMapper.map(camp, CampFormDto.class);
 	}
-	
+
 }

@@ -24,10 +24,10 @@ public class ResvFormDto {
 	private String siteName;
 	
 	@NotNull(message = "체크인 날짜는 필수 입력 값입니다")
-	private Date chkIn;
+	private String chkIn;
 
 	@NotNull(message = "체크아웃 날짜는 필수 입력 값입니다")
-	private Date chkOut;
+	private String chkOut;
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

@@ -31,6 +31,7 @@ import com.campingsite.dto.CampListDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
 import com.campingsite.dto.ResvFormDto;
+import com.campingsite.entity.Reservation;
 import com.campingsite.service.CampService;
 import com.campingsite.service.ResvService;
 
@@ -77,7 +78,7 @@ public class CampController {
 		if(bindingResult.hasErrors()) {
 			return"reserve/reserveForm";
 		}
-		try {
+		try {		
 			campService.saveResv(resvFormDto);
 		} catch (Exception e) {
 			model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
