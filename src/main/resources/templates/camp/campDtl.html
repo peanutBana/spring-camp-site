@@ -142,7 +142,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
             <h4 class="display-5">상세 설명</h4>
             <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
             	<button th:onclick="'location.href=\'update/'+ @{${camp.id}} + '\''">수정하기</button>
-           	<button th:onclick="'location.href=\''+ @{${camp.id}} + '/delete'+'\''">삭제하기</button>
+           		<button th:onclick="'location.href=\''+ @{${camp.id}} + '/delete'+'\''">삭제하기</button>
             </div>
            	
             <hr class="my-4">
@@ -151,8 +151,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
          </div>
       </div>
       <!—- 나머지 이미지 보여줌 —->
-      		
-	
 	   <div th:each="campImg : ${camp.campImgDtoList}" class="">
           <img th:if="${not #strings.isEmpty(campImg.imgUrl)}" th:src="${campImg.imgUrl}" class="detail-img" width="800">
        </div> 

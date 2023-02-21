@@ -19,7 +19,6 @@ public class CampListDto {
 	private CampType campType;
 	private ResvStatus resvStatus;
 	
-	
 	@QueryProjection
 	public CampListDto(Long id, String campName, int emptySiteNum, String campTel, 
 				String introduction, String imgUrl, CampType campType, ResvStatus resvStatus) {
