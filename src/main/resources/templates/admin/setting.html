@@ -13,39 +13,25 @@
 			<table>
 				<thead>
 					<tr>
-						<th>user_id</th>
-						<th>email</th>
-						<th>name</th>
-						<th>password</th>
-						<th>role</th>
-						<th></th>
+						
+							<th>user_id</th>
+							<th>email</th>
+							<th>name</th>
+							<th>password</th>
+							<th>role</th>
+						
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>001</td>
-						<td>alsdn0321@naver.com</td>
-						<td>박민우</td>
-						<td>*********</td>
-						<td>ADMIN</td>
-						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
-					</tr>
-					<tr>
-						<td>002</td>
-						<td>rudqja0821@naver.com</td>
-						<td>김경범</td>
-						<td>*********</td>
-						<td>USER</td>
-						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
-					</tr>
-					<tr>
-						<td>003</td>
-						<td>haseo777@naver.com</td>
-						<td>김하서</td>
-						<td>*********</td>
-						<td>USER</td>
-						<td><a href="#">수정</a> | <a href="#">삭제</a></td>
-					</tr>
+					<th:block th:each="user, status:${users}">
+						<tr>
+							<td th:value="${user.id}">001</td>
+							<td th:value="${user.email}">alsdn0321@naver.com</td>
+							<td th:value="${user.name}">박민우</td>
+							<td th:value="${user.role}">ADMIN</td>
+							<td><a href="#">수정</a> | <a href="#">삭제</a></td>
+						</tr>
+					</th:block>
 				</tbody>
 			</table>
 		</div> 
@@ -53,14 +39,16 @@
 			<p>[게시물 리스트]</p>
 			<table>
 				<thead>
-					<tr>
-						<th>post_id</th>
-						<th>post_title</th>
-						<th>user_id</th>
-						<th>post_type</th>
-						<th>reg_date</th>
-						<th></th>
-					</tr>
+					<th:block th:each="camp, status:${camps}">
+						<tr>
+							<th th:value="${camp.id}">post_id</th>
+							<th th:value="${camp.campName]}">post_title</th>
+							<th th:value="${camp.regDate}">user_id</th>
+							<th th:value="${camp.resvStatus}">post_type</th>
+							<th th:value="${camp.emptySiteNum}">reg_date</th>
+							<th></th>
+						</tr>
+					</th:block>	
 				</thead>
 				<tbody>
 					<tr>
