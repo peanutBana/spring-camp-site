@@ -52,9 +52,4 @@ public class ResvController {
 		}	
 		return new ResponseEntity<Long>(resvId, HttpStatus.OK);
 	}
-	
-//	@GetMapping(value="/reserve/{campId}")
-//	public String reserve(Model model, @PathVariable("campId") Long campId) {
-//		return "reserve/reserveForm";
-//	}
 }

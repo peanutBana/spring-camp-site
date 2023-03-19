@@ -1,5 +1,6 @@
 package com.campingsite.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,8 +71,7 @@ public class CampController {
 	}
 	
 	@PostMapping(value="reserve/{campId}")
-	public String reserve(@Valid ResvFormDto resvFormDto, BindingResult bindingResult, 
-			Model model) {
+	public String reserve(@Valid ResvFormDto resvFormDto, BindingResult bindingResult, Model model, Principal principal) {
 		if(bindingResult.hasErrors()) {
 			return"reserve/reserveForm";
 		}
