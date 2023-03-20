@@ -78,7 +78,6 @@
 					<th:block th:each="resv, status:${reservations}">				
 						<tr>
 							<td th:value="${resv.id}"></td>
-							<td th:value="${resv.user.id}"></td>
 							<td th:value="${resv.chkIn}"></td>
 							<td th:value="${resv.regTime}"></td>
 							<td><a href="#">수정</a> | <a href="#">삭제</a></td>
