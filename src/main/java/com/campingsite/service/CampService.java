@@ -17,7 +17,6 @@ import com.campingsite.dto.CampImgDto;
 import com.campingsite.dto.CampListDto;
 import com.campingsite.dto.CampSearchDto;
 import com.campingsite.dto.MainCampDto;
-import com.campingsite.dto.PostFormDto;
 import com.campingsite.dto.ResvFormDto;
 import com.campingsite.entity.Camp;
 import com.campingsite.entity.CampImg;

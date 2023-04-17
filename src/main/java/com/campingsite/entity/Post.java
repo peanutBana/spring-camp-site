@@ -12,7 +12,6 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.campingsite.constant.PostType;
-import com.campingsite.dto.PostFormDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -48,11 +47,11 @@ public class Post extends BaseEntity{
 	@JoinColumn(name="camp_id")
 	private int campId;
 	
-	public void updatePost(PostFormDto postFormDto) {
-		this.postTitle = postFormDto.getPostTitle();
-		this.postDetail = postFormDto.getPostDetail();
-			
-	}
+//	public void updatePost(PostFormDto postFormDto) {
+//		this.postTitle = postFormDto.getPostTitle();
+//		this.postDetail = postFormDto.getPostDetail();
+//			
+//	}
 	
 	
 }

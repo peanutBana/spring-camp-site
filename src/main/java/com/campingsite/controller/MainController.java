@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.campingsite.dto.CampFormDto;
 import com.campingsite.dto.MainCampDto;
 import com.campingsite.dto.MainPostDto;
-import com.campingsite.dto.PostSearchDto;
 import com.campingsite.service.CampService;
 
 import lombok.RequiredArgsConstructor;
