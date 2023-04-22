@@ -35,9 +35,11 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class CampService {
 	private final CampRepository campRepository;
+	private final UserRepository userRepository;
 	private final CampImgService campImgService;
 	private final CampImgRepository campImgRepository;
 	private final ResvRepository resvRepository;
+	private final User user;
 
 	//상품 등록
 	public Long saveCamp(CampFormDto campFormDto, List<MultipartFile> campImgFileList) throws Exception{
@@ -160,5 +162,18 @@ public class CampService {
 		@Transactional(readOnly = true)
 		public Page<CampListDto> getCampListPage(CampSearchDto campSearchDto, Pageable pageable) {
 			return campRepository.getCampListPage(campSearchDto, pageable);
+		}
+		
+		@Transactional(readOnly = true)
+		public boolean validateBoard(Long boardId, String id) {
+			User curUser= userRepository.findByUserId(id);
+			Camp camp = campRepository.findById(boardId).orElseThrow(EntityNotFoundException::new);
+			
+			User savedUser= camp.getUser();
+			
+			if(!StringUtils.equals(curUser.getId(), savedUser.getId())) {
+				return false;
+			}
+			return true;
 		}
 }

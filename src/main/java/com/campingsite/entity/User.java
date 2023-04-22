@@ -4,15 +4,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.campingsite.constant.Role;
 import com.campingsite.dto.UserFormDto;
+import com.campingsite.entity.BaseEntity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +27,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class User{
+public class User extends BaseEntity{
 	@Id
 	@Column(name="user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)

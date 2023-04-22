@@ -153,11 +153,5 @@ public class CampController {
 			 campService.deleteCamp(campId);
 			 return new ResponseEntity<Long>(campId, HttpStatus.OK);
 		 }
-//		
-//		 
-//		@DeleteMapping(value = "/{campId}/delete")
-//		public String deleteCamp(@PathVariable("campId")Long campId) {
-//			 campService.deleteCamp(campId);
-//			 return "camp/campDtl";
-//		 }
+
 }
