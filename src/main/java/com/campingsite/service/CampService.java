@@ -164,16 +164,16 @@ public class CampService {
 			return campRepository.getCampListPage(campSearchDto, pageable);
 		}
 		
-		@Transactional(readOnly = true)
-		public boolean validateBoard(Long boardId, String id) {
-			User curUser= userRepository.findByUserId(id);
-			Camp camp = campRepository.findById(boardId).orElseThrow(EntityNotFoundException::new);
-			
-			User savedUser= camp.getUser();
-			
-			if(!StringUtils.equals(curUser.getId(), savedUser.getId())) {
-				return false;
-			}
-			return true;
-		}
+//		@Transactional(readOnly = true)
+//		public boolean validateBoard(Long boardId, String id) {
+//			User curUser= userRepository.findByUserId(id);
+//			Camp camp = campRepository.findById(boardId).orElseThrow(EntityNotFoundException::new);
+//
+//			User savedUser= camp.getUser();
+//
+//			if(!StringUtils.equals(curUser.getId(), savedUser.getId())) {
+//				return false;
+//			}
+//			return true;
+//		}
 }
